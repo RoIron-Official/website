@@ -1,104 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title><%= title %></title>
-  <link rel="stylesheet" href="/css/style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-  <header class="header">
-    <div class="container">
-      <div class="header-inner">
-        <a href="/" class="logo">
-          <svg width="32" height="32" viewBox="0 0 128 128" fill="none">
-            <rect width="128" height="128" rx="28" fill="#0a0a0a"/>
-            <rect x="4" y="4" width="120" height="120" rx="24" stroke="#ffffff" stroke-width="2.5"/>
-            <text x="64" y="82" font-size="52" font-weight="700" fill="#ffffff" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">RI</text>
-          </svg>
-          <span class="logo-text">RoIron</span>
-        </a>
-        <nav class="nav">
-          <a href="/" class="nav-link">Home</a>
-          <a href="/features" class="nav-link">Features</a>
-          <a href="/download" class="nav-link">Download</a>
-          <a href="/docs" class="nav-link">Docs</a>
-          <a href="/license" class="nav-link">License</a>
-        </nav>
-      </div>
-    </div>
-  </header>
+    <%- include('partials/header') %>
 
-  <main>
-    <section class="section">
-      <div class="container">
-        <div class="section-header">
-          <h1>Features</h1>
-          <p>All the tools RoIron provides</p>
-        </div>
-        <div style="max-width:800px;margin:0 auto;">
-          <div style="display:flex;flex-direction:column;gap:16px;">
-            <div style="display:flex;align-items:flex-start;gap:16px;padding:16px 20px;background:#1a1a1a;border:1px solid rgba(255,255,255,0.06);border-radius:12px;">
-              <div style="font-size:28px;">🎮</div>
-              <div><h3 style="font-size:16px;">Game Cards</h3><p style="color:#888888;font-size:14px;">Quick Play and Random Server buttons on every game card.</p></div>
+    <main>
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>All Features</h2>
+                    <p>Everything RoIron has to offer</p>
+                </div>
+                <div class="features-grid" style="grid-template-columns: repeat(2, 1fr);">
+                    <div class="feature-card">
+                        <div class="feature-icon">📦</div>
+                        <h3>Core Modules</h3>
+                        <p>Activity Tracker, Game Status, Game Page enhancements, Game Cards, Buttons, Images, Shortcuts, User Badge, Friend Status, Server Region, Avatar Preview, Search, Navigation, Game Launcher.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🎨</div>
+                        <h3>Theme Creator</h3>
+                        <p>Create and apply custom themes with real-time preview. Edit colors, sizes, spacing, and more.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🖼️</div>
+                        <h3>Avatar Customizer</h3>
+                        <p>Customize your avatar with special effects: Glow, Fire, Rainbow, Galaxy, Diamond.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">👤</div>
+                        <h3>Profile Override</h3>
+                        <p>Minimalistic profile view with only essential stats: Games, Badges, Groups, Inventory, Trade.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🏆</div>
+                        <h3>Leaderboards</h3>
+                        <p>Track XP, Level, and Playtime. Compete with other RoIron users.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔧</div>
+                        <h3>Admin Panel</h3>
+                        <p>Manage licenses and users. Available only for authorized admins.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🌐</div>
+                        <h3>Server Region</h3>
+                        <p>Display server region information for game servers.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">👥</div>
+                        <h3>Friend Status</h3>
+                        <p>See online status of your friends with beautiful visual indicators.</p>
+                    </div>
+                </div>
             </div>
-            <div style="display:flex;align-items:flex-start;gap:16px;padding:16px 20px;background:#1a1a1a;border:1px solid rgba(255,255,255,0.06);border-radius:12px;">
-              <div style="font-size:28px;">👤</div>
-              <div><h3 style="font-size:16px;">Friend Status</h3><p style="color:#888888;font-size:14px;">Real-time online status with animated avatars.</p></div>
-            </div>
-            <div style="display:flex;align-items:flex-start;gap:16px;padding:16px 20px;background:#1a1a1a;border:1px solid rgba(255,255,255,0.06);border-radius:12px;">
-              <div style="font-size:28px;">🎨</div>
-              <div><h3 style="font-size:16px;">Theme Creator</h3><p style="color:#888888;font-size:14px;">Full control over Roblox appearance.</p></div>
-            </div>
-            <div style="display:flex;align-items:flex-start;gap:16px;padding:16px 20px;background:#1a1a1a;border:1px solid rgba(255,255,255,0.06);border-radius:12px;">
-              <div style="font-size:28px;">📊</div>
-              <div><h3 style="font-size:16px;">Activity Tracker</h3><p style="color:#888888;font-size:14px;">Track playtime, earn XP, level up.</p></div>
-            </div>
-            <div style="display:flex;align-items:flex-start;gap:16px;padding:16px 20px;background:#1a1a1a;border:1px solid rgba(255,255,255,0.06);border-radius:12px;">
-              <div style="font-size:28px;">🔒</div>
-              <div><h3 style="font-size:16px;">Privacy & Security</h3><p style="color:#888888;font-size:14px;">Blocks ads, trackers, and analytics.</p></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
+        </section>
+    </main>
 
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <div class="footer-logo">
-            <svg width="28" height="28" viewBox="0 0 128 128" fill="none">
-              <rect width="128" height="128" rx="28" fill="#0a0a0a"/>
-              <rect x="4" y="4" width="120" height="120" rx="24" stroke="#ffffff" stroke-width="2.5"/>
-              <text x="64" y="82" font-size="52" font-weight="700" fill="#ffffff" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">RI</text>
-            </svg>
-            <span>RoIron</span>
-          </div>
-          <p class="footer-desc">Lightweight Roblox enhancement tool.</p>
-          <p class="footer-version">Version <%= version %></p>
-        </div>
-        <div>
-          <h4>Product</h4>
-          <a href="/features">Features</a>
-          <a href="/download">Download</a>
-          <a href="/docs">Documentation</a>
-        </div>
-        <div>
-          <h4>Legal</h4>
-          <a href="/license">License</a>
-        </div>
-        <div>
-          <h4>Community</h4>
-          <a href="https://discord.gg/9DD3vD6jkr" target="_blank">Discord</a>
-          <a href="https://github.com/RoIron-Official/extension" target="_blank">GitHub</a>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <span>&copy; <%= year %> RoIron. All rights reserved.</span>
-      </div>
-    </div>
-  </footer>
+    <%- include('partials/footer') %>
 </body>
 </html>
