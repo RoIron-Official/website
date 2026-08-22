@@ -4,18 +4,8 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Статические файлы
+// Static files
 app.use(express.static(path.join(__dirname, 'public')));
-
-// Download route
-app.get('/download/roiron.crx', (req, res) => {
-  const filePath = path.join(__dirname, 'public', 'downloads', 'roiron.crx');
-  res.download(filePath, 'roiron.crx', (err) => {
-    if (err) {
-      res.status(404).send('File not found');
-    }
-  });
-});
 
 // EJS
 app.set('view engine', 'ejs');
@@ -62,12 +52,12 @@ app.get('/license', (req, res) => {
   });
 });
 
-// Health check для Vercel
+// Health check
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', version: '1.3.9' });
 });
 
-// Для Vercel — экспортируем app
+// For Vercel
 if (process.env.VERCEL) {
   module.exports = app;
 } else {
