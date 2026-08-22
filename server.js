@@ -62,6 +62,11 @@ app.get('/license', (req, res) => {
   });
 });
 
+// Health check для Vercel
+app.get('/api/health', (req, res) => {
+  res.json({ status: 'ok', version: '1.3.9' });
+});
+
 // Для Vercel — экспортируем app
 if (process.env.VERCEL) {
   module.exports = app;
