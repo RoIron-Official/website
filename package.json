@@ -5,14 +5,10 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "build": "node build.js",
-    "deploy": "npm run build && gh-pages -d dist"
+    "build": "node build.js"
   },
   "dependencies": {
     "express": "^4.18.2",
     "ejs": "^3.1.9"
-  },
-  "devDependencies": {
-    "gh-pages": "^6.1.1"
   }
 }
