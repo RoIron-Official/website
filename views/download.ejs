@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="header-inner">
+        <a href="/" class="logo">
+          <svg width="32" height="32" viewBox="0 0 128 128" fill="none">
+            <rect width="128" height="128" rx="28" fill="#0a0a0a"/>
+            <rect x="4" y="4" width="120" height="120" rx="24" stroke="#ffffff" stroke-width="2.5"/>
+            <text x="64" y="82" font-size="52" font-weight="700" fill="#ffffff" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">RI</text>
+          </svg>
+          <span class="logo-text">RoIron</span>
+        </a>
+        <nav class="nav">
+          <a href="/" class="nav-link">Home</a>
+          <a href="/features" class="nav-link">Features</a>
+          <a href="/download" class="nav-link">Download</a>
+          <a href="/docs" class="nav-link">Docs</a>
+          <a href="/license" class="nav-link">License</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <h1>Download RoIron</h1>
+          <p>Get the latest version of RoIron</p>
+        </div>
+        <div style="max-width:500px;margin:0 auto;text-align:center;">
+          <div style="background:#1a1a1a;border:1px solid #4a9eff;border-radius:12px;padding:40px;">
+            <svg width="64" height="64" viewBox="0 0 128 128" fill="none" style="margin:0 auto 16px;">
+              <rect width="128" height="128" rx="28" fill="#0a0a0a"/>
+              <rect x="4" y="4" width="120" height="120" rx="24" stroke="#4a9eff" stroke-width="2.5"/>
+              <text x="64" y="82" font-size="52" font-weight="700" fill="#4a9eff" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">RI</text>
+            </svg>
+            <h2 style="font-size:24px;margin-bottom:8px;">RoIron v<%= version %></h2>
+            <p style="color:#888888;margin-bottom:24px;">Chrome Extension</p>
+            <a href="/download/roiron.crx" class="btn btn-primary" style="display:inline-flex;align-items:center;gap:8px;padding:14px 40px;font-size:18px;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Download .crx
+            </a>
+            <p style="font-size:12px;color:#666666;margin-top:16px;">Version <%= version %> · 1.2 MB</p>
+          </div>
+          <div style="margin-top:24px;padding:20px;background:#1a1a1a;border-radius:12px;border:1px solid rgba(255,255,255,0.06);text-align:left;">
+            <h3 style="font-size:16px;margin-bottom:12px;">Installation</h3>
+            <ol style="padding-left:20px;color:#888888;font-size:14px;">
+              <li>Download <strong>roiron.crx</strong></li>
+              <li>Open Chrome → <code style="background:rgba(255,255,255,0.04);padding:2px 8px;border-radius:4px;color:#4a9eff;">chrome://extensions/</code></li>
+              <li>Enable <strong>Developer mode</strong></li>
+              <li>Drag and drop <strong>roiron.crx</strong></li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-logo">
+            <svg width="28" height="28" viewBox="0 0 128 128" fill="none">
+              <rect width="128" height="128" rx="28" fill="#0a0a0a"/>
+              <rect x="4" y="4" width="120" height="120" rx="24" stroke="#ffffff" stroke-width="2.5"/>
+              <text x="64" y="82" font-size="52" font-weight="700" fill="#ffffff" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">RI</text>
+            </svg>
+            <span>RoIron</span>
+          </div>
+          <p class="footer-desc">Lightweight Roblox enhancement tool with focus on performance and privacy.</p>
+          <p class="footer-version">Version <%= version %></p>
+        </div>
+        <div>
+          <h4>Product</h4>
+          <a href="/features">Features</a>
+          <a href="/download">Download</a>
+          <a href="/docs">Documentation</a>
+        </div>
+        <div>
+          <h4>Legal</h4>
+          <a href="/license">License</a>
+        </div>
+        <div>
+          <h4>Community</h4>
+          <a href="https://discord.gg/9DD3vD6jkr" target="_blank">Discord</a>
+          <a href="https://github.com/RoIron-Official/extension" target="_blank">GitHub</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; <%= year %> RoIron. All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

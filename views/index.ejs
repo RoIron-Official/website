@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="header-inner">
+        <a href="/" class="logo">
+          <svg width="32" height="32" viewBox="0 0 128 128" fill="none">
+            <rect width="128" height="128" rx="28" fill="#0a0a0a"/>
+            <rect x="4" y="4" width="120" height="120" rx="24" stroke="#ffffff" stroke-width="2.5"/>
+            <text x="64" y="82" font-size="52" font-weight="700" fill="#ffffff" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">RI</text>
+          </svg>
+          <span class="logo-text">RoIron</span>
+        </a>
+        <nav class="nav">
+          <a href="/" class="nav-link">Home</a>
+          <a href="/features" class="nav-link">Features</a>
+          <a href="/download" class="nav-link">Download</a>
+          <a href="/docs" class="nav-link">Docs</a>
+          <a href="/license" class="nav-link">License</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-text">
+            <div class="hero-badge">
+              <span class="badge-dot"></span>
+              v<%= version %> · Free & Open
+            </div>
+            <h1>Enhance Your <span>Roblox</span> Experience</h1>
+            <p>Lightweight browser extension that optimizes Roblox with performance enhancements, privacy features, and a modern interface.</p>
+            <div class="hero-actions">
+              <a href="/download/roiron.crx" class="btn btn-primary">Download Extension</a>
+              <a href="/features" class="btn btn-outline">Learn More →</a>
+            </div>
+          </div>
+          <div class="hero-visual">
+            <div class="hero-card">
+              <div class="hero-card-header">
+                <div class="hero-card-dots"><span></span><span></span><span></span></div>
+                <span>RoIron v<%= version %></span>
+              </div>
+              <div class="hero-card-body">
+                <div class="hero-card-stats">
+                  <div><span class="stat-value">✅</span><span class="stat-label">Active</span></div>
+                  <div><span class="stat-value">⚡</span><span class="stat-label">Optimized</span></div>
+                  <div><span class="stat-value">🔒</span><span class="stat-label">Private</span></div>
+                </div>
+                <div class="hero-card-features">
+                  <span>🎮 Game Cards</span>
+                  <span>👤 Friend Status</span>
+                  <span>🎨 Theme Creator</span>
+                  <span>📊 Activity Tracker</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Why RoIron?</h2>
+          <p>Everything you need to enhance your Roblox experience</p>
+        </div>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">🚀</div>
+            <h3>Performance</h3>
+            <p>Lightweight and fast — no unnecessary bloat.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🔒</div>
+            <h3>Privacy</h3>
+            <p>Blocks trackers and analytics. Your data stays yours.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🎨</div>
+            <h3>Customization</h3>
+            <p>Full theme control with Theme Creator.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">📊</div>
+            <h3>Activity Tracker</h3>
+            <p>Track playtime, earn XP, and level up.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">👤</div>
+            <h3>Friend Status</h3>
+            <p>See online status with animated avatars.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🎮</div>
+            <h3>Game Enhancements</h3>
+            <p>Quick play buttons and random server join.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-logo">
+            <svg width="28" height="28" viewBox="0 0 128 128" fill="none">
+              <rect width="128" height="128" rx="28" fill="#0a0a0a"/>
+              <rect x="4" y="4" width="120" height="120" rx="24" stroke="#ffffff" stroke-width="2.5"/>
+              <text x="64" y="82" font-size="52" font-weight="700" fill="#ffffff" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">RI</text>
+            </svg>
+            <span>RoIron</span>
+          </div>
+          <p class="footer-desc">Lightweight Roblox enhancement tool with focus on performance and privacy.</p>
+          <p class="footer-version">Version <%= version %></p>
+        </div>
+        <div>
+          <h4>Product</h4>
+          <a href="/features">Features</a>
+          <a href="/download">Download</a>
+          <a href="/docs">Documentation</a>
+        </div>
+        <div>
+          <h4>Legal</h4>
+          <a href="/license">License</a>
+        </div>
+        <div>
+          <h4>Community</h4>
+          <a href="https://discord.gg/9DD3vD6jkr" target="_blank">Discord</a>
+          <a href="https://github.com/RoIron-Official/extension" target="_blank">GitHub</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; <%= year %> RoIron. All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
