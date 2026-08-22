@@ -52,6 +52,16 @@ app.get('/license', (req, res) => {
   });
 });
 
+// Download route
+app.get('/download/roiron.crx', (req, res) => {
+  const filePath = path.join(__dirname, 'public', 'downloads', 'roiron.crx');
+  res.download(filePath, 'roiron.crx', (err) => {
+    if (err) {
+      res.status(404).send('File not found. Please check back later.');
+    }
+  });
+});
+
 // Health check
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', version: '1.3.9' });
