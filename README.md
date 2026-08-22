@@ -2,6 +2,14 @@
 
 Official website for RoIron — Roblox Optimizer.
 
+## Features
+
+- No emojis — all icons are SVG
+- Login with secret key
+- 30-day session persistence
+- Dashboard showing user stats
+- Automatic redirect after login
+
 ## Setup
 
 ```bash
@@ -17,12 +25,11 @@ Works with Vercel, Netlify, or any Node.js host.
 vercel
 ```
 
-## Structure
+## Environment
 
-```
-public/        → Static assets (CSS)
-views/         → EJS templates
-server.js      → Express server
-vercel.json    → Vercel config
+- Node.js 24.x required
+- Uses express-session for authentication
+- Session stored in memory (for production, use Redis or database)
+
 ```
 

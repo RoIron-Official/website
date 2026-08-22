@@ -26,9 +26,14 @@
         <a href="https://github.com/RoIron-Official" target="_blank">GitHub</a>
       </div>
       <div>
-        <h4>Legal</h4>
+        <h4>Account</h4>
+        <% if (user && user.userId) { %>
+          <a href="/dashboard">Dashboard</a>
+          <a href="/logout">Sign Out</a>
+        <% } else { %>
+          <a href="/login">Sign In</a>
+        <% } %>
         <a href="/license">License</a>
-        <a href="/privacy">Privacy Policy</a>
       </div>
     </div>
     <div class="footer-bottom">
