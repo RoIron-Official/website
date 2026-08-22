@@ -120,13 +120,19 @@ app.get('/api/db/stats', async (req, res) => {
   try {
     const [usersRes, licensesRes, sessionsRes] = await Promise.all([
       fetch(`${API_BASE}/admin/users`, {
-        headers: { 'X-User-ID': '499004729' }
+        headers: { 
+          'X-Admin-Key': 'ROIRON-ADMIN-SECRET-2024-SECURE-KEY-999'
+        }
       }).catch(() => ({ ok: false })),
       fetch(`${API_BASE}/admin/licenses`, {
-        headers: { 'X-User-ID': '499004729' }
+        headers: { 
+          'X-Admin-Key': 'ROIRON-ADMIN-SECRET-2024-SECURE-KEY-999'
+        }
       }).catch(() => ({ ok: false })),
       fetch(`${API_BASE}/admin/sessions`, {
-        headers: { 'X-User-ID': '499004729' }
+        headers: { 
+          'X-Admin-Key': 'ROIRON-ADMIN-SECRET-2024-SECURE-KEY-999'
+        }
       }).catch(() => ({ ok: false }))
     ]);
 
