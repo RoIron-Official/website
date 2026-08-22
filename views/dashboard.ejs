@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - RoIron</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" href="/icon.png">
+</head>
+<body>
+    <%- include('partials/header') %>
+
+    <main>
+        <section class="section">
+            <div class="container">
+                <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 24px;">
+                    <img src="/icon.png" alt="RoIron" style="width: 48px; height: 48px; border-radius: 12px;">
+                    <div>
+                        <h1 style="font-size: 28px; font-weight: 700; color: #ffffff; margin: 0;">Dashboard</h1>
+                        <p style="color: #888888; font-size: 14px; margin: 0;">Welcome back, <span id="username-display" style="color: #4a9eff; font-weight: 600;">User</span></p>
+                    </div>
+                    <a href="/login" id="logout-btn" style="margin-left: auto; padding: 8px 20px; background: rgba(255,50,50,0.1); border: 1px solid rgba(255,50,50,0.2); border-radius: 6px; color: #ff6b6b; font-size: 13px; font-weight: 500; text-decoration: none; transition: all 0.3s ease; cursor: pointer;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: inline; vertical-align: middle; margin-right: 4px;"><path d="M9 21H5C3.89543 21 3 20.1046 3 19V5C3 3.89543 3.89543 3 5 3H9"/><path d="M16 17L21 12L16 7"/><path d="M21 12H9"/></svg>
+                        Logout
+                    </a>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 24px;">
+                    <div style="background: #1a1a1a; border: 1px solid rgba(255,255,255,0.06); border-radius: 10px; padding: 20px; text-align: center;">
+                        <div style="font-size: 32px; font-weight: 800; color: #4a9eff;" id="level-display">1</div>
+                        <div style="font-size: 11px; color: #666666;">Level</div>
+                    </div>
+                    <div style="background: #1a1a1a; border: 1px solid rgba(255,255,255,0.06); border-radius: 10px; padding: 20px; text-align: center;">
+                        <div style="font-size: 32px; font-weight: 800; color: #ffd700;" id="xp-display">0</div>
+                        <div style="font-size: 11px; color: #666666;">Total XP</div>
+                        <div style="width: 100%; height: 4px; background: rgba(255,255,255,0.06); border-radius: 2px; margin-top: 8px; overflow: hidden;">
+                            <div id="xp-progress" style="height: 100%; background: linear-gradient(90deg, #4a9eff, #ffd700); border-radius: 2px; transition: width 0.5s ease; width: 0%;"></div>
+                        </div>
+                        <div style="font-size: 10px; color: #444444; margin-top: 4px;" id="xp-progress-text">0 / 100</div>
+                    </div>
+                    <div style="background: #1a1a1a; border: 1px solid rgba(255,255,255,0.06); border-radius: 10px; padding: 20px; text-align: center;">
+                        <div style="font-size: 32px; font-weight: 800; color: #4CAF50;" id="playtime-display">0h 0m</div>
+                        <div style="font-size: 11px; color: #666666;">Playtime</div>
+                    </div>
+                </div>
+
+                <div style="background: #1a1a1a; border: 1px solid rgba(255,255,255,0.06); border-radius: 10px; padding: 24px; margin-bottom: 16px;">
+                    <h3 style="color: #ffffff; font-size: 16px; font-weight: 600; margin-bottom: 8px;">🔑 Your Secret Key</h3>
+                    <div style="display: flex; align-items: center; gap: 8px; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.04); border-radius: 6px; padding: 8px 14px;">
+                        <code id="secret-key-display" style="flex: 1; color: #4a9eff; font-size: 13px; font-family: 'SF Mono', monospace; word-break: break-all;">Loading...</code>
+                        <button id="copy-key" style="padding: 4px 12px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.06); border-radius: 4px; color: #888888; font-size: 11px; cursor: pointer; transition: all 0.2s ease;">
+                            Copy
+                        </button>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 8px;">
+                    <a href="/" class="btn btn-primary" style="justify-content: center;">🏠 Home</a>
+                    <a href="/features" class="btn btn-outline" style="justify-content: center;">✨ Features</a>
+                    <a href="/docs" class="btn btn-outline" style="justify-content: center;">📚 Docs</a>
+                    <a href="/download" class="btn btn-outline" style="justify-content: center;">⬇ Download</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <%- include('partials/footer') %>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load user data from localStorage
+            const username = localStorage.getItem('roiron_username') || 'User';
+            const secretKey = localStorage.getItem('roiron_secret_key') || 'Not found';
+            const xp = parseInt(localStorage.getItem('roiron_xp')) || 0;
+            const level = parseInt(localStorage.getItem('roiron_level')) || 1;
+            const playtime = parseInt(localStorage.getItem('roiron_playtime')) || 0;
+
+            document.getElementById('username-display').textContent = username;
+            document.getElementById('level-display').textContent = level;
+            document.getElementById('xp-display').textContent = xp;
+
+            // Playtime
+            const hours = Math.floor(playtime / 60);
+            const minutes = playtime % 60;
+            document.getElementById('playtime-display').textContent = hours + 'h ' + minutes + 'm';
+
+            // XP progress
+            const xpToNext = Math.floor(100 * Math.pow(level, 1.5));
+            const xpInLevel = xp % xpToNext;
+            const progress = Math.round((xpInLevel / xpToNext) * 100);
+            document.getElementById('xp-progress').style.width = progress + '%';
+            document.getElementById('xp-progress-text').textContent = xpInLevel + ' / ' + xpToNext + ' XP';
+
+            // Secret key
+            document.getElementById('secret-key-display').textContent = secretKey;
+
+            // Copy key
+            document.getElementById('copy-key').addEventListener('click', function() {
+                navigator.clipboard.writeText(secretKey).then(() => {
+                    this.textContent = 'Copied!';
+                    setTimeout(() => { this.textContent = 'Copy'; }, 2000);
+                });
+            });
+
+            // Logout
+            document.getElementById('logout-btn').addEventListener('click', function(e) {
+                e.preventDefault();
+                if (confirm('Are you sure you want to logout?')) {
+                    localStorage.removeItem('roiron_secret_key');
+                    localStorage.removeItem('roiron_userId');
+                    localStorage.removeItem('roiron_username');
+                    localStorage.removeItem('roiron_xp');
+                    localStorage.removeItem('roiron_level');
+                    localStorage.removeItem('roiron_playtime');
+                    window.location.href = '/login';
+                }
+            });
+
+            // Check if not logged in
+            if (!localStorage.getItem('roiron_secret_key')) {
+                window.location.href = '/login';
+            }
+        });
+    </script>
+</body>
+</html>

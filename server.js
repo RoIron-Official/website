@@ -4,14 +4,59 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Static files
+// Middleware
+app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // EJS
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-// Routes
+// ============================================================
+//  API — LOGIN
+// ============================================================
+
+app.post('/api/auth/login', async (req, res) => {
+  try {
+    const { secretKey } = req.body;
+    
+    if (!secretKey) {
+      return res.status(400).json({ success: false, error: 'Secret key required' });
+    }
+
+    // Проверяем через API прокси (или напрямую)
+    const response = await fetch('https://ri.servegame.net/api/v999/auth/profile?secretKey=' + encodeURIComponent(secretKey));
+    const data = await response.json();
+
+    if (data.success && data.profile) {
+      return res.json({
+        success: true,
+        userId: data.profile.id,
+        username: data.profile.username || 'User',
+        xp: data.profile.xp || 0,
+        level: data.profile.level || 1,
+        playtime_minutes: data.profile.playtime_minutes || 0,
+        decoration: data.profile.decoration || 'none'
+      });
+    } else {
+      return res.status(401).json({ 
+        success: false, 
+        error: data.error || 'Invalid secret key' 
+      });
+    }
+  } catch (error) {
+    console.error('[Login] Error:', error.message);
+    return res.status(500).json({ 
+      success: false, 
+      error: 'Server error. Please try again.' 
+    });
+  }
+});
+
+// ============================================================
+//  PAGES
+// ============================================================
+
 app.get('/', (req, res) => {
   res.render('index', {
     title: 'RoIron - Roblox Optimizer',
@@ -47,6 +92,22 @@ app.get('/docs', (req, res) => {
 app.get('/license', (req, res) => {
   res.render('license', {
     title: 'License - RoIron',
+    version: '1.3.9',
+    year: new Date().getFullYear()
+  });
+});
+
+app.get('/login', (req, res) => {
+  res.render('login', {
+    title: 'Login - RoIron',
+    version: '1.3.9',
+    year: new Date().getFullYear()
+  });
+});
+
+app.get('/dashboard', (req, res) => {
+  res.render('dashboard', {
+    title: 'Dashboard - RoIron',
     version: '1.3.9',
     year: new Date().getFullYear()
   });

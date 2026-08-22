@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - RoIron</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" href="/icon.png">
+</head>
+<body>
+    <%- include('partials/header') %>
+
+    <main>
+        <section class="section">
+            <div class="container">
+                <div style="max-width: 420px; margin: 0 auto;">
+                    <div style="text-align: center; margin-bottom: 32px;">
+                        <img src="/icon.png" alt="RoIron" style="width: 64px; height: 64px; border-radius: 16px; margin-bottom: 16px;">
+                        <h2 style="font-size: 28px; font-weight: 700; color: #ffffff;">Welcome Back</h2>
+                        <p style="color: #888888; font-size: 14px;">Enter your secret key to access RoIron</p>
+                    </div>
+
+                    <div style="background: #1a1a1a; border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 32px;">
+                        <form id="login-form" style="display: flex; flex-direction: column; gap: 16px;">
+                            <div>
+                                <label for="secret-key" style="display: block; font-size: 13px; font-weight: 500; color: #cccccc; margin-bottom: 6px;">
+                                    Secret Key
+                                </label>
+                                <div style="position: relative;">
+                                    <input 
+                                        type="password" 
+                                        id="secret-key" 
+                                        placeholder="ROIRON-SECRET-XXXX-XXXX-XXXX-XXXXXXXX"
+                                        style="width: 100%; padding: 12px 16px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; color: #ffffff; font-size: 14px; font-family: 'SF Mono', monospace; outline: none; transition: border-color 0.3s ease;"
+                                        autocomplete="off"
+                                        spellcheck="false"
+                                    >
+                                    <button 
+                                        type="button" 
+                                        id="toggle-password" 
+                                        style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: none; border: none; color: #666666; cursor: pointer; padding: 4px;"
+                                    >
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12C1 12 5 4 12 4C19 4 23 12 23 12C23 12 19 20 12 20C5 20 1 12 1 12Z"/><circle cx="12" cy="12" r="3"/></svg>
+                                    </button>
+                                </div>
+                                <div style="font-size: 11px; color: #555555; margin-top: 4px;">
+                                    Your secret key from license activation
+                                </div>
+                            </div>
+
+                            <div id="login-message" style="display: none; padding: 10px 14px; border-radius: 6px; font-size: 13px;"></div>
+
+                            <button type="submit" id="login-btn" style="width: 100%; padding: 14px; background: #4a9eff; border: none; border-radius: 8px; color: #ffffff; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3H21V9"/><path d="M21 3L14 10"/><path d="M10 5H5C3.89543 5 3 5.89543 3 7V19C3 20.1046 3.89543 21 5 21H17C18.1046 21 19 20.1046 19 19V14"/></svg>
+                                Sign In
+                            </button>
+                        </form>
+
+                        <div style="margin-top: 20px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.04); text-align: center;">
+                            <p style="font-size: 12px; color: #555555;">
+                                Don't have a key? 
+                                <a href="/" style="color: #4a9eff; text-decoration: none;">Activate license</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <%- include('partials/footer') %>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('login-form');
+            const keyInput = document.getElementById('secret-key');
+            const messageEl = document.getElementById('login-message');
+            const loginBtn = document.getElementById('login-btn');
+            const toggleBtn = document.getElementById('toggle-password');
+
+            // Toggle password visibility
+            toggleBtn.addEventListener('click', function() {
+                const type = keyInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                keyInput.setAttribute('type', type);
+                this.innerHTML = type === 'password' 
+                    ? `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12C1 12 5 4 12 4C19 4 23 12 23 12C23 12 19 20 12 20C5 20 1 12 1 12Z"/><circle cx="12" cy="12" r="3"/></svg>`
+                    : `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20C5 20 1 12 1 12C1 12 2.06 9.94 4.06 7.94"/><path d="M9.88 9.88A3 3 0 0 1 12 9C13.6569 9 15 10.3431 15 12C15 12.41 14.9 12.8 14.72 13.14"/><path d="M21 3L3 21"/></svg>`;
+            });
+
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                const secretKey = keyInput.value.trim();
+                if (!secretKey) {
+                    showMessage('Please enter your secret key', 'error');
+                    return;
+                }
+
+                // Validate format
+                if (!secretKey.startsWith('ROIRON-SECRET-')) {
+                    showMessage('Invalid secret key format. Must start with ROIRON-SECRET-', 'error');
+                    return;
+                }
+
+                loginBtn.disabled = true;
+                loginBtn.innerHTML = `
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="animation: roiron-spin 1s linear infinite;"><circle cx="12" cy="12" r="10"/><path d="M12 2V6"/><path d="M12 18V22"/><path d="M4.93 4.93L7.76 7.76"/><path d="M16.24 16.24L19.07 19.07"/><path d="M2 12H6"/><path d="M18 12H22"/><path d="M4.93 19.07L7.76 16.24"/><path d="M16.24 7.76L19.07 4.93"/></svg>
+                    Verifying...
+                `;
+                loginBtn.style.opacity = '0.7';
+
+                try {
+                    const response = await fetch('/api/auth/login', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ secretKey })
+                    });
+
+                    const data = await response.json();
+
+                    if (data.success) {
+                        showMessage('✅ Welcome back, ' + (data.username || 'User') + '!', 'success');
+                        localStorage.setItem('roiron_secret_key', secretKey);
+                        localStorage.setItem('roiron_userId', data.userId);
+                        localStorage.setItem('roiron_username', data.username);
+                        localStorage.setItem('roiron_xp', data.xp);
+                        localStorage.setItem('roiron_level', data.level);
+                        localStorage.setItem('roiron_playtime', data.playtime_minutes);
+                        
+                        setTimeout(() => {
+                            window.location.href = '/dashboard';
+                        }, 1500);
+                    } else {
+                        showMessage('❌ ' + (data.error || 'Invalid secret key'), 'error');
+                    }
+                } catch (error) {
+                    showMessage('❌ Network error. Please try again.', 'error');
+                }
+
+                loginBtn.disabled = false;
+                loginBtn.innerHTML = `
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3H21V9"/><path d="M21 3L14 10"/><path d="M10 5H5C3.89543 5 3 5.89543 3 7V19C3 20.1046 3.89543 21 5 21H17C18.1046 21 19 20.1046 19 19V14"/></svg>
+                    Sign In
+                `;
+                loginBtn.style.opacity = '1';
+            });
+
+            function showMessage(text, type) {
+                messageEl.textContent = text;
+                messageEl.style.display = 'block';
+                messageEl.style.background = type === 'error' ? 'rgba(255,50,50,0.05)' : 'rgba(76,175,80,0.05)';
+                messageEl.style.border = type === 'error' ? '1px solid rgba(255,50,50,0.15)' : '1px solid rgba(76,175,80,0.15)';
+                messageEl.style.color = type === 'error' ? '#ff6b6b' : '#4CAF50';
+                
+                if (type === 'success') {
+                    clearTimeout(messageEl._timeout);
+                    messageEl._timeout = setTimeout(() => {
+                        messageEl.style.display = 'none';
+                    }, 5000);
+                }
+            }
+
+            // Check if already logged in
+            const savedKey = localStorage.getItem('roiron_secret_key');
+            if (savedKey && savedKey.startsWith('ROIRON-SECRET-')) {
+                keyInput.value = savedKey;
+                // Auto-submit after 500ms
+                setTimeout(() => {
+                    form.dispatchEvent(new Event('submit'));
+                }, 500);
+            }
+        });
+    </script>
+
+    <style>
+        @keyframes roiron-spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</body>
+</html>
