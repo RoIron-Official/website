@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= title %></title>
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" href="/icon.png">
 </head>
 <body>
     <%- include('partials/header') %>
@@ -54,17 +55,26 @@
                         </p>
                     </div>
 
+                    <div style="background: #1a1a1a; border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 24px; margin-bottom: 16px;">
+                        <h3 style="color: #ffffff; font-size: 18px; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4a9eff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4H16L20 8V20H4V4Z"/><path d="M12 8V13M9 11H15"/></svg>
+                            Keyboard Shortcuts
+                        </h3>
+                        <ul style="color: #888888; font-size: 14px; line-height: 2; padding-left: 20px;">
+                            <li><kbd style="background: rgba(255,255,255,0.04); padding: 2px 8px; border-radius: 4px; color: #ffffff;">Alt</kbd> + <kbd style="background: rgba(255,255,255,0.04); padding: 2px 8px; border-radius: 4px; color: #ffffff;">R</kbd> — Open RoIron home page</li>
+                            <li><kbd style="background: rgba(255,255,255,0.04); padding: 2px 8px; border-radius: 4px; color: #ffffff;">Alt</kbd> + <kbd style="background: rgba(255,255,255,0.04); padding: 2px 8px; border-radius: 4px; color: #ffffff;">S</kbd> — Open RoIron settings</li>
+                            <li><kbd style="background: rgba(255,255,255,0.04); padding: 2px 8px; border-radius: 4px; color: #ffffff;">Alt</kbd> + <kbd style="background: rgba(255,255,255,0.04); padding: 2px 8px; border-radius: 4px; color: #ffffff;">L</kbd> — Go to license activation page</li>
+                        </ul>
+                    </div>
+
                     <div style="background: #1a1a1a; border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 24px;">
                         <h3 style="color: #ffffff; font-size: 18px; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4a9eff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.477 2 2 6.477 2 12C2 17.523 6.477 22 12 22C17.523 22 22 17.523 22 12C22 6.477 17.523 2 12 2Z"/><path d="M8 16C8 16 9 18 12 18C15 18 16 16 16 16"/><circle cx="9" cy="10" r="1.5"/><circle cx="15" cy="10" r="1.5"/></svg>
-                            Development
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4a9eff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4H18V8C18 10 17 12 15 13.5C13.5 15 12 15.5 12 15.5C12 15.5 10.5 15 9 13.5C7 12 6 10 6 8V4Z"/><path d="M6 4H4V7C4 8.5 5 9.5 6 10"/><path d="M18 4H20V7C20 8.5 19 9.5 18 10"/><path d="M12 15.5V20"/><path d="M9 20H15"/></svg>
+                            Leaderboards
                         </h3>
                         <p style="color: #888888; font-size: 14px; line-height: 1.8;">
-                            RoIron is open-source. You can find the source code and contribute on GitHub.
-                            <br><br>
-                            <code style="background: rgba(255,255,255,0.04); padding: 4px 12px; border-radius: 4px; color: #4a9eff; display: inline-block;">
-                                git clone https://github.com/RoIron-Official/roiron.git
-                            </code>
+                            RoIron tracks your XP, level, and playtime. Compete with other users on the leaderboards
+                            and see how you rank. Your activity is tracked automatically when you play Roblox games.
                         </p>
                     </div>
                 </div>

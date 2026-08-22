@@ -78,7 +78,6 @@
             const loginBtn = document.getElementById('login-btn');
             const toggleBtn = document.getElementById('toggle-password');
 
-            // Toggle password visibility
             toggleBtn.addEventListener('click', function() {
                 const type = keyInput.getAttribute('type') === 'password' ? 'text' : 'password';
                 keyInput.setAttribute('type', type);
@@ -96,7 +95,6 @@
                     return;
                 }
 
-                // Validate format
                 if (!secretKey.startsWith('ROIRON-SECRET-')) {
                     showMessage('Invalid secret key format. Must start with ROIRON-SECRET-', 'error');
                     return;
@@ -121,7 +119,7 @@
                     const data = await response.json();
 
                     if (data.success) {
-                        showMessage('✅ Welcome back, ' + (data.username || 'User') + '!', 'success');
+                        showMessage('Welcome back, ' + (data.username || 'User') + '!', 'success');
                         localStorage.setItem('roiron_secret_key', secretKey);
                         localStorage.setItem('roiron_userId', data.userId);
                         localStorage.setItem('roiron_username', data.username);
@@ -133,10 +131,10 @@
                             window.location.href = '/dashboard';
                         }, 1500);
                     } else {
-                        showMessage('❌ ' + (data.error || 'Invalid secret key'), 'error');
+                        showMessage(data.error || 'Invalid secret key', 'error');
                     }
                 } catch (error) {
-                    showMessage('❌ Network error. Please try again.', 'error');
+                    showMessage('Network error. Please try again.', 'error');
                 }
 
                 loginBtn.disabled = false;
@@ -162,11 +160,9 @@
                 }
             }
 
-            // Check if already logged in
             const savedKey = localStorage.getItem('roiron_secret_key');
             if (savedKey && savedKey.startsWith('ROIRON-SECRET-')) {
                 keyInput.value = savedKey;
-                // Auto-submit after 500ms
                 setTimeout(() => {
                     form.dispatchEvent(new Event('submit'));
                 }, 500);
