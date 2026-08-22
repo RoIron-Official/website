@@ -1,56 +1,39 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= title %></title>
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="icon" href="/icon.png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
 </head>
 <body>
-    <%- include('partials/header') %>
+  <%- include('partials/header') %>
 
-    <main>
-        <section class="section">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Download RoIron</h2>
-                    <p>Get the latest version</p>
-                </div>
-                <div style="max-width: 600px; margin: 0 auto; text-align: center;">
-                    <div style="background: #1a1a1a; border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 40px; margin-bottom: 20px;">
-                        <div style="display: flex; justify-content: center; margin-bottom: 16px;">
-                            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#4a9eff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16V20H20V16"/><path d="M12 4V14M12 14L9 11M12 14L15 11"/></svg>
-                        </div>
-                        <h3 style="color: #ffffff; font-size: 24px; margin-bottom: 8px;">RoIron Extension</h3>
-                        <p style="color: #888888; font-size: 14px; margin-bottom: 24px;">Version <%= version %></p>
-                        <a href="/download/roiron.crx" class="btn btn-primary" style="font-size: 16px; padding: 14px 40px;">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16V20H20V16"/><path d="M12 4V14M12 14L9 11M12 14L15 11"/></svg>
-                            Download .crx
-                        </a>
-                        <p style="color: #666666; font-size: 12px; margin-top: 16px;">
-                            Compatible with Chrome and Brave browsers
-                        </p>
-                    </div>
+  <section class="section">
+    <div class="container" style="text-align:center;max-width:600px;">
+      <div class="section-header">
+        <h2>Download RoIron</h2>
+        <p>Get the latest version of RoIron for your browser</p>
+      </div>
+      <div style="background:#1a1a1a;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:40px;">
+        <div style="font-size:64px;margin-bottom:16px;">⬇️</div>
+        <h3 style="font-size:24px;margin-bottom:8px;">RoIron v<%= version %></h3>
+        <p style="color:#888888;margin-bottom:24px;">Chrome / Edge / Brave compatible</p>
+        <a href="/download/roiron.crx" class="btn btn-primary" style="font-size:18px;padding:14px 40px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download .crx
+        </a>
+        <div style="margin-top:20px;font-size:13px;color:#666666;">
+          <p>1. Download the .crx file</p>
+          <p>2. Open <kbd>chrome://extensions</kbd></p>
+          <p>3. Enable <kbd>Developer mode</kbd></p>
+          <p>4. Drag the .crx file into the page</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-                    <div style="background: #1a1a1a; border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 24px;">
-                        <h4 style="color: #cccccc; font-size: 14px; margin-bottom: 8px;">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#888888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="10" x2="12" y2="16"/><circle cx="12" cy="8" r="0.5" stroke="none"/></svg>
-                            Installation Guide
-                        </h4>
-                        <ol style="color: #888888; font-size: 13px; text-align: left; padding-left: 20px; line-height: 2;">
-                            <li>Download the <code>roiron.crx</code> file</li>
-                            <li>Open Chrome and go to <code>chrome://extensions/</code></li>
-                            <li>Enable <strong>Developer mode</strong> (toggle in top right)</li>
-                            <li>Drag and drop the <code>roiron.crx</code> file into the page</li>
-                            <li>Click <strong>Add extension</strong> and you're done!</li>
-                        </ol>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <%- include('partials/footer') %>
+  <%- include('partials/footer') %>
 </body>
 </html>

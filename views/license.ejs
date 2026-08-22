@@ -1,79 +1,36 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= title %></title>
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="icon" href="/icon.png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
 </head>
 <body>
-    <%- include('partials/header') %>
+  <%- include('partials/header') %>
 
-    <main>
-        <section class="section">
-            <div class="container">
-                <div class="section-header">
-                    <h2>License Agreement</h2>
-                    <p>RoIron — Terms of Use</p>
-                </div>
+  <section class="section">
+    <div class="container" style="max-width:700px;">
+      <div class="section-header">
+        <h2>License</h2>
+        <p>RoIron License Agreement</p>
+      </div>
+      <div style="background:#1a1a1a;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:30px;color:#888888;line-height:1.8;">
+        <p><strong style="color:#ffffff;">RoIron License</strong></p>
+        <p>By using RoIron, you agree to the following terms:</p>
+        <ul style="padding-left:20px;margin:12px 0;">
+          <li>RoIron is provided as-is, without warranty of any kind.</li>
+          <li>You may use RoIron for personal, non-commercial purposes only.</li>
+          <li>Redistribution of RoIron is prohibited without explicit permission.</li>
+          <li>All intellectual property rights belong to RoIron.</li>
+        </ul>
+        <p style="margin-top:12px;">For any questions, contact us on <a href="https://discord.gg/9DD3vD6jkr" target="_blank" style="color:#4a9eff;">Discord</a>.</p>
+        <div style="margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.06);font-size:12px;color:#666666;">Last updated: August 2026</div>
+      </div>
+    </div>
+  </section>
 
-                <div style="max-width: 800px; margin: 0 auto; background: #1a1a1a; border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 32px; color: #cccccc; font-size: 14px; line-height: 1.8;">
-                    <h3 style="color: #ffffff; font-size: 18px; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4CAF50" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                        1. Right to Use
-                    </h3>
-                    <p>The user has the right to FREE use of the RoIron software (hereinafter referred to as the "Software") for personal and commercial purposes, provided that all provisions of this agreement are complied with.</p>
-
-                    <h3 style="color: #ffffff; font-size: 18px; margin-top: 24px; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ff6b6b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                        2. Prohibitions
-                    </h3>
-                    <p>The user is PROHIBITED from:</p>
-                    <ul style="padding-left: 20px; color: #888888;">
-                        <li>Modification, decompilation, or disassembly of the Software's source code or its parts.</li>
-                        <li>Distribution, sale, or transfer of the Software to third parties without the author's written permission.</li>
-                        <li>Creation of derivative works (forks, modified versions) based on the Software.</li>
-                        <li>Use of the Software in any commercial products, services, or projects without the explicit written permission of the author.</li>
-                    </ul>
-
-                    <h3 style="color: #ffffff; font-size: 18px; margin-top: 24px; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF9800" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="10" x2="12" y2="16"/><circle cx="12" cy="8" r="0.5" stroke="none"/></svg>
-                        3. Limitation of Liability
-                    </h3>
-                    <p>The Software is provided "as is". The author shall not be liable for:</p>
-                    <ul style="padding-left: 20px; color: #888888;">
-                        <li>Any losses, damages, or data loss arising from the use or inability to use the Software.</li>
-                        <li>The Software not meeting the user's expectations.</li>
-                        <li>Actions of third parties related to the use of the Software.</li>
-                    </ul>
-
-                    <h3 style="color: #ffffff; font-size: 18px; margin-top: 24px; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4a9eff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7C7 4.23858 9.23858 2 12 2C14.7614 2 17 4.23858 17 7V11"/></svg>
-                        4. Copyright
-                    </h3>
-                    <p>All rights to the RoIron Software, including source code, design, documentation, and related materials, belong to the author (RoIron). This agreement does not transfer to the user any intellectual property rights other than the right to use specified in Section 1.</p>
-
-                    <h3 style="color: #ffffff; font-size: 18px; margin-top: 24px; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ff6b6b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                        5. Termination
-                    </h3>
-                    <p>The license is perpetual but may be revoked by the author in the event of a breach of the terms of this agreement by the user. Upon revocation, the user must cease using the Software and delete all copies of it.</p>
-
-                    <h3 style="color: #ffffff; font-size: 18px; margin-top: 24px; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4a9eff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L4 5V12C4 16.5 7 20.5 12 22C17 20.5 20 16.5 20 12V5L12 2Z"/><path d="M9 12L11 14L15 10"/></svg>
-                        6. Governing Law
-                    </h3>
-                    <p>This agreement shall be governed by the laws of the author's country. All disputes shall be resolved in court at the author's place of residence.</p>
-
-                    <div style="margin-top: 32px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.06); text-align: center; color: #666666; font-size: 12px;">
-                        RoIron v<%= version %> · <%= year %>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <%- include('partials/footer') %>
+  <%- include('partials/footer') %>
 </body>
 </html>

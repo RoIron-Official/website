@@ -1,84 +1,34 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= title %></title>
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="icon" href="/icon.png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
 </head>
 <body>
-    <%- include('partials/header') %>
+  <%- include('partials/header') %>
 
-    <main>
-        <section class="section">
-            <div class="container">
-                <div class="section-header">
-                    <h2>All Features</h2>
-                    <p>Everything RoIron has to offer</p>
-                </div>
-                <div class="features-grid" style="grid-template-columns: repeat(2, 1fr);">
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#4a9eff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="8 7 3 12 8 17"/><polyline points="16 7 21 12 16 17"/></svg>
-                        </div>
-                        <h3>Core Modules</h3>
-                        <p>Activity Tracker, Game Status, Game Page enhancements, Game Cards, Buttons, Images, Shortcuts, User Badge, Friend Status, Server Region, Avatar Preview, Search, Navigation, Game Launcher.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#4a9eff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2C12 6 16 8 16 12C16 16 12 18 12 22"/><path d="M12 2C12 6 8 8 8 12C8 16 12 18 12 22"/><path d="M4 8H20"/><path d="M4 16H20"/></svg>
-                        </div>
-                        <h3>Theme Creator</h3>
-                        <p>Create and apply custom themes with real-time preview. Edit colors, sizes, spacing, and more.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#4a9eff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.5 22 9.5 17 14.5 18.5 21.5 12 18 5.5 21.5 7 14.5 2 9.5 8.91 8.5"/></svg>
-                        </div>
-                        <h3>Avatar Customizer</h3>
-                        <p>Customize your avatar with special effects: Glow, Fire, Rainbow, Galaxy, Diamond.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#4a9eff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="4"/><path d="M3 20C3 15 5.68629 12 9 12C12.3137 12 15 15 15 20"/><circle cx="17" cy="9" r="3"/><path d="M12 20C12 16 14 14 17 14C20 14 22 16 22 20"/></svg>
-                        </div>
-                        <h3>Profile Override</h3>
-                        <p>Minimalistic profile view with only essential stats: Games, Badges, Groups, Inventory, Trade.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#4a9eff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4H18V8C18 10 17 12 15 13.5C13.5 15 12 15.5 12 15.5C12 15.5 10.5 15 9 13.5C7 12 6 10 6 8V4Z"/><path d="M6 4H4V7C4 8.5 5 9.5 6 10"/><path d="M18 4H20V7C20 8.5 19 9.5 18 10"/><path d="M12 15.5V20"/><path d="M9 20H15"/></svg>
-                        </div>
-                        <h3>Leaderboards</h3>
-                        <p>Track XP, Level, and Playtime. Compete with other RoIron users.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#4a9eff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 6V3M12 21V18M6 12H3M21 12H18M7.5 7.5L5.5 5.5M18.5 18.5L16.5 16.5M16.5 7.5L18.5 5.5M5.5 18.5L7.5 16.5"/></svg>
-                        </div>
-                        <h3>Admin Panel</h3>
-                        <p>Manage licenses and users. Available only for authorized admins.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#4a9eff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="6" rx="2"/><rect x="3" y="14" width="18" height="6" rx="2"/><circle cx="7" cy="7" r="1"/><circle cx="7" cy="17" r="1"/><circle cx="12" cy="7" r="1"/><circle cx="12" cy="17" r="1"/></svg>
-                        </div>
-                        <h3>Server Region</h3>
-                        <p>Display server region information for game servers.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#4a9eff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="4"/><circle cx="7" cy="11" r="1.5"/><circle cx="17" cy="11" r="1.5"/><path d="M10 14H14"/><path d="M12 12V16"/></svg>
-                        </div>
-                        <h3>Friend Status</h3>
-                        <p>See online status of your friends with beautiful visual indicators.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>All Features</h2>
+        <p>Everything RoIron has to offer</p>
+      </div>
+      <div class="features-grid" style="grid-template-columns:1fr 1fr;">
+        <div class="feature-card"><h3>🚀 Ad Blocker</h3><p>Blocks ads, analytics, and tracking scripts for a clean experience.</p></div>
+        <div class="feature-card"><h3>🌙 Dark Theme</h3><p>Fully customizable dark theme for all Roblox pages.</p></div>
+        <div class="feature-card"><h3>🏆 XP & Leveling</h3><p>Earn XP for playing, track your level, and compete on leaderboards.</p></div>
+        <div class="feature-card"><h3>👥 Friend Status</h3><p>See online status of your friends directly on their avatars.</p></div>
+        <div class="feature-card"><h3>🎨 Avatar Customizer</h3><p>Glow, Fire, Rainbow, Galaxy, Diamond effects for your avatar.</p></div>
+        <div class="feature-card"><h3>🌍 Server Region</h3><p>See server region and join random servers with one click.</p></div>
+        <div class="feature-card"><h3>🖼️ Image Optimizer</h3><p>Lazy loading for images, faster page loads.</p></div>
+        <div class="feature-card"><h3>⌨️ Keyboard Shortcuts</h3><p>Alt+R for home, Alt+S for settings.</p></div>
+      </div>
+    </div>
+  </section>
 
-    <%- include('partials/footer') %>
+  <%- include('partials/footer') %>
 </body>
 </html>

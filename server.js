@@ -4,13 +4,13 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Middleware
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// EJS
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
+
+const API_BASE = 'https://ri.servegame.net/api/v999';
 
 // ============================================================
 //  API — DB STATS
@@ -18,27 +18,19 @@ app.set('views', path.join(__dirname, 'views'));
 
 app.get('/api/db/stats', async (req, res) => {
   try {
-    const [
-      usersRes,
-      licensesRes,
-      sessionsRes,
-      statsRes
-    ] = await Promise.all([
-      fetch('https://ri.servegame.net/api/v999/admin/users', {
+    const [usersRes, licensesRes, sessionsRes] = await Promise.all([
+      fetch(`${API_BASE}/admin/users`, {
         headers: { 'X-User-ID': '499004729' }
       }).catch(() => ({ ok: false })),
-      fetch('https://ri.servegame.net/api/v999/admin/licenses', {
+      fetch(`${API_BASE}/admin/licenses`, {
         headers: { 'X-User-ID': '499004729' }
       }).catch(() => ({ ok: false })),
-      fetch('https://ri.servegame.net/api/v999/admin/sessions', {
-        headers: { 'X-User-ID': '499004729' }
-      }).catch(() => ({ ok: false })),
-      fetch('https://ri.servegame.net/api/v999/admin/stats', {
+      fetch(`${API_BASE}/admin/sessions`, {
         headers: { 'X-User-ID': '499004729' }
       }).catch(() => ({ ok: false }))
     ]);
 
-    let users = [], licenses = [], sessions = [], stats = {};
+    let users = [], licenses = [], sessions = [];
 
     if (usersRes.ok) {
       const data = await usersRes.json();
@@ -53,10 +45,6 @@ app.get('/api/db/stats', async (req, res) => {
     if (sessionsRes.ok) {
       const data = await sessionsRes.json();
       sessions = data.sessions || [];
-    }
-
-    if (statsRes.ok) {
-      stats = await statsRes.json();
     }
 
     const now = Math.floor(Date.now() / 1000);
@@ -77,7 +65,6 @@ app.get('/api/db/stats', async (req, res) => {
       total_xp: totalXp,
       avg_level: avgLevel,
       total_playtime: totalPlaytime,
-      db_type: process.env.DB_TYPE || 'MySQL',
       updated_at: Date.now()
     });
 
@@ -86,45 +73,6 @@ app.get('/api/db/stats', async (req, res) => {
     return res.status(500).json({
       success: false,
       error: error.message
-    });
-  }
-});
-
-// ============================================================
-//  API — LOGIN
-// ============================================================
-
-app.post('/api/auth/login', async (req, res) => {
-  try {
-    const { secretKey } = req.body;
-    if (!secretKey) {
-      return res.status(400).json({ success: false, error: 'Secret key required' });
-    }
-
-    const response = await fetch('https://ri.servegame.net/api/v999/auth/profile?secretKey=' + encodeURIComponent(secretKey));
-    const data = await response.json();
-
-    if (data.success && data.profile) {
-      return res.json({
-        success: true,
-        userId: data.profile.id,
-        username: data.profile.username || 'User',
-        xp: data.profile.xp || 0,
-        level: data.profile.level || 1,
-        playtime_minutes: data.profile.playtime_minutes || 0,
-        decoration: data.profile.decoration || 'none'
-      });
-    } else {
-      return res.status(401).json({
-        success: false,
-        error: data.error || 'Invalid secret key'
-      });
-    }
-  } catch (error) {
-    console.error('[Login] Error:', error.message);
-    return res.status(500).json({
-      success: false,
-      error: 'Server error. Please try again.'
     });
   }
 });
@@ -197,22 +145,10 @@ app.get('/stats', (req, res) => {
   });
 });
 
-// Download route
-app.get('/download/roiron.crx', (req, res) => {
-  const filePath = path.join(__dirname, 'public', 'downloads', 'roiron.crx');
-  res.download(filePath, 'roiron.crx', (err) => {
-    if (err) {
-      res.status(404).send('File not found. Please check back later.');
-    }
-  });
-});
-
-// Health check
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', version: '1.3.9' });
 });
 
-// For Vercel
 if (process.env.VERCEL) {
   module.exports = app;
 } else {

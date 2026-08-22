@@ -1,87 +1,44 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= title %></title>
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="icon" href="/icon.png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
 </head>
 <body>
-    <%- include('partials/header') %>
+  <%- include('partials/header') %>
 
-    <main>
-        <section class="section">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Documentation</h2>
-                    <p>Everything you need to know about RoIron</p>
-                </div>
+  <section class="section">
+    <div class="container" style="max-width:800px;">
+      <div class="section-header">
+        <h2>Documentation</h2>
+        <p>Getting started with RoIron</p>
+      </div>
+      <div style="background:#1a1a1a;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:30px;margin-top:20px;">
+        <h3 style="margin-bottom:12px;">📥 Installation</h3>
+        <p style="color:#888888;margin-bottom:16px;">Download the <code>.crx</code> file from the <a href="/download" style="color:#4a9eff;">download page</a>.</p>
+        <ol style="color:#888888;padding-left:20px;line-height:2;">
+          <li>Open <kbd>chrome://extensions</kbd> in your browser</li>
+          <li>Enable <kbd>Developer mode</kbd> (top right)</li>
+          <li>Drag the <code>.crx</code> file into the page</li>
+          <li>Click <kbd>Add extension</kbd></li>
+        </ol>
 
-                <div style="max-width: 800px; margin: 0 auto;">
-                    <div style="background: #1a1a1a; border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 24px; margin-bottom: 16px;">
-                        <h3 style="color: #ffffff; font-size: 18px; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4a9eff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C12 2 8 6 8 12C8 15 10 18 12 20C14 18 16 15 16 12C16 6 12 2 12 2Z"/><path d="M12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9Z"/><path d="M8 12H4"/><path d="M20 12H16"/><path d="M12 8V4"/><path d="M12 20V16"/></svg>
-                            Getting Started
-                        </h3>
-                        <p style="color: #888888; font-size: 14px; line-height: 1.8;">
-                            RoIron is a lightweight Roblox enhancement tool. After installing the extension,
-                            navigate to <code>https://www.roblox.com/roiron</code>
-                            to activate your license and start using all features.
-                        </p>
-                    </div>
+        <h3 style="margin-top:24px;margin-bottom:12px;">🔑 License Activation</h3>
+        <p style="color:#888888;margin-bottom:16px;">After installation, go to <kbd>https://www.roblox.com/roiron</kbd> and enter your license key.</p>
+        <p style="color:#888888;">You'll receive a <code>secretKey</code> after activation — keep it safe!</p>
 
-                    <div style="background: #1a1a1a; border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 24px; margin-bottom: 16px;">
-                        <h3 style="color: #ffffff; font-size: 18px; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4a9eff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L4 5V12C4 16.5 7 20.5 12 22C17 20.5 20 16.5 20 12V5L12 2Z"/><path d="M9 12L11 14L15 10"/></svg>
-                            License Activation
-                        </h3>
-                        <p style="color: #888888; font-size: 14px; line-height: 1.8;">
-                            To activate RoIron, you need a valid license key. Visit
-                            <code>https://www.roblox.com/roiron</code>
-                            and enter your license key. You will be redirected to the home page upon successful activation.
-                        </p>
-                    </div>
+        <h3 style="margin-top:24px;margin-bottom:12px;">⌨️ Shortcuts</h3>
+        <ul style="color:#888888;padding-left:20px;line-height:2;">
+          <li><kbd>Alt + R</kbd> — Open RoIron Home</li>
+          <li><kbd>Alt + S</kbd> — Open RoIron Settings</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-                    <div style="background: #1a1a1a; border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 24px; margin-bottom: 16px;">
-                        <h3 style="color: #ffffff; font-size: 18px; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4a9eff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2C12 6 16 8 16 12C16 16 12 18 12 22"/><path d="M12 2C12 6 8 8 8 12C8 16 12 18 12 22"/><path d="M4 8H20"/><path d="M4 16H20"/></svg>
-                            Theme Creator
-                        </h3>
-                        <p style="color: #888888; font-size: 14px; line-height: 1.8;">
-                            RoIron includes a powerful Theme Creator. Click the paint palette icon in the sidebar
-                            to open the editor. You can pick any element on the page and customize its styles:
-                            colors, sizes, spacing, borders, and more. Changes are applied globally.
-                        </p>
-                    </div>
-
-                    <div style="background: #1a1a1a; border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 24px; margin-bottom: 16px;">
-                        <h3 style="color: #ffffff; font-size: 18px; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4a9eff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4H16L20 8V20H4V4Z"/><path d="M12 8V13M9 11H15"/></svg>
-                            Keyboard Shortcuts
-                        </h3>
-                        <ul style="color: #888888; font-size: 14px; line-height: 2; padding-left: 20px;">
-                            <li><kbd style="background: rgba(255,255,255,0.04); padding: 2px 8px; border-radius: 4px; color: #ffffff;">Alt</kbd> + <kbd style="background: rgba(255,255,255,0.04); padding: 2px 8px; border-radius: 4px; color: #ffffff;">R</kbd> — Open RoIron home page</li>
-                            <li><kbd style="background: rgba(255,255,255,0.04); padding: 2px 8px; border-radius: 4px; color: #ffffff;">Alt</kbd> + <kbd style="background: rgba(255,255,255,0.04); padding: 2px 8px; border-radius: 4px; color: #ffffff;">S</kbd> — Open RoIron settings</li>
-                            <li><kbd style="background: rgba(255,255,255,0.04); padding: 2px 8px; border-radius: 4px; color: #ffffff;">Alt</kbd> + <kbd style="background: rgba(255,255,255,0.04); padding: 2px 8px; border-radius: 4px; color: #ffffff;">L</kbd> — Go to license activation page</li>
-                        </ul>
-                    </div>
-
-                    <div style="background: #1a1a1a; border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 24px;">
-                        <h3 style="color: #ffffff; font-size: 18px; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4a9eff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4H18V8C18 10 17 12 15 13.5C13.5 15 12 15.5 12 15.5C12 15.5 10.5 15 9 13.5C7 12 6 10 6 8V4Z"/><path d="M6 4H4V7C4 8.5 5 9.5 6 10"/><path d="M18 4H20V7C20 8.5 19 9.5 18 10"/><path d="M12 15.5V20"/><path d="M9 20H15"/></svg>
-                            Leaderboards
-                        </h3>
-                        <p style="color: #888888; font-size: 14px; line-height: 1.8;">
-                            RoIron tracks your XP, level, and playtime. Compete with other users on the leaderboards
-                            and see how you rank. Your activity is tracked automatically when you play Roblox games.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <%- include('partials/footer') %>
+  <%- include('partials/footer') %>
 </body>
 </html>
