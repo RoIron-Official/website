@@ -21,6 +21,43 @@ body {
 }
 
 /* ============================================================
+   ICONS
+   ============================================================ */
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 1em;
+  height: 1em;
+  line-height: 1;
+}
+
+.icon svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.icon-sm { width: 14px; height: 14px; }
+.icon-md { width: 20px; height: 20px; }
+.icon-lg { width: 28px; height: 28px; }
+.icon-xl { width: 40px; height: 40px; }
+.icon-xxl { width: 56px; height: 56px; }
+
+.icon-primary { color: #4a9eff; }
+.icon-success { color: #4CAF50; }
+.icon-warning { color: #FF9800; }
+.icon-danger { color: #ff6b6b; }
+.icon-muted { color: #888888; }
+.icon-white { color: #ffffff; }
+
+/* ============================================================
    HEADER
    ============================================================ */
 
@@ -287,6 +324,7 @@ body {
   border-radius: 12px;
   padding: 24px;
   transition: all 0.3s ease;
+  text-align: center;
 }
 
 .feature-card:hover {
@@ -305,13 +343,11 @@ body {
   font-size: 18px;
   font-weight: 600;
   margin-bottom: 6px;
-  text-align: center;
 }
 
 .feature-card p {
   color: #888888;
   font-size: 14px;
-  text-align: center;
 }
 
 /* ============================================================
