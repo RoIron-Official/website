@@ -1,0 +1,22 @@
+<header class="header">
+  <div class="container header-inner">
+    <a href="/" class="logo">
+      <svg width="28" height="28" viewBox="0 0 128 128" fill="none">
+        <rect width="128" height="128" rx="28" fill="#0a0a0a"/>
+        <rect x="4" y="4" width="120" height="120" rx="24" stroke="#4a9eff" stroke-width="2.5"/>
+        <text x="64" y="82" font-size="52" font-weight="700" fill="#4a9eff" text-anchor="middle" font-family="Helvetica Neue, sans-serif">RI</text>
+      </svg>
+      <span>RoIron</span>
+    </a>
+    <nav class="nav">
+      <a href="/features" class="nav-link">Features</a>
+      <a href="/download" class="nav-link">Download</a>
+      <a href="/docs" class="nav-link">Docs</a>
+      <a href="/login" class="nav-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+        <%= user && user.userId ? 'Dashboard' : 'Login' %>
+      </a>
+      <a href="https://discord.gg/9DD3vD6jkr" target="_blank" class="nav-link">Discord</a>
+    </nav>
+  </div>
+</header>

@@ -1,0 +1,43 @@
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">
+          <svg width="24" height="24" viewBox="0 0 128 128" fill="none">
+            <rect width="128" height="128" rx="28" fill="#0a0a0a"/>
+            <rect x="4" y="4" width="120" height="120" rx="24" stroke="#4a9eff" stroke-width="2"/>
+            <text x="64" y="82" font-size="48" font-weight="700" fill="#4a9eff" text-anchor="middle" font-family="Helvetica Neue, sans-serif">RI</text>
+          </svg>
+          <span>RoIron</span>
+        </div>
+        <div class="footer-desc">Lightweight Roblox enhancement tool with focus on performance and privacy.</div>
+        <div class="footer-version">v<%= version %></div>
+      </div>
+      <div>
+        <h4>Product</h4>
+        <a href="/features">Features</a>
+        <a href="/download">Download</a>
+        <a href="/docs">Documentation</a>
+        <a href="/license">License</a>
+      </div>
+      <div>
+        <h4>Community</h4>
+        <a href="https://discord.gg/9DD3vD6jkr" target="_blank">Discord</a>
+        <a href="https://github.com/RoIron-Official" target="_blank">GitHub</a>
+      </div>
+      <div>
+        <h4>Account</h4>
+        <% if (user && user.userId) { %>
+          <a href="/dashboard">Dashboard</a>
+          <a href="/logout">Sign Out</a>
+        <% } else { %>
+          <a href="/login">Sign In</a>
+        <% } %>
+        <a href="/license">License</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; <%= year %> RoIron. All rights reserved.
+    </div>
+  </div>
+</footer>

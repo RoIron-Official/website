@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Crect width='128' height='128' rx='28' fill='%230a0a0a'/%3E%3Crect x='4' y='4' width='120' height='120' rx='24' stroke='%234a9eff' stroke-width='2.5'/%3E%3Ctext x='64' y='82' font-size='52' font-weight='700' fill='%234a9eff' text-anchor='middle' font-family='Helvetica Neue, sans-serif'%3ERI%3C/text%3E%3C/svg%3E" />
+</head>
+<body>
+  <%- include('partials/header') %>
+
+  <section class="section">
+    <div class="container" style="max-width:700px;">
+      <div class="section-header">
+        <h2>License</h2>
+        <p>RoIron License Agreement</p>
+      </div>
+      <div style="background:#1a1a1a;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:30px;color:#888888;line-height:1.8;">
+        <p><strong style="color:#ffffff;">RoIron License</strong></p>
+        <p>By using RoIron, you agree to the following terms:</p>
+        <ul style="padding-left:20px;margin:12px 0;">
+          <li>RoIron is provided as-is, without warranty of any kind.</li>
+          <li>You may use RoIron for personal, non-commercial purposes only.</li>
+          <li>Redistribution of RoIron is prohibited without explicit permission.</li>
+          <li>All intellectual property rights belong to RoIron.</li>
+        </ul>
+        <p style="margin-top:12px;">For any questions, contact us on <a href="https://discord.gg/9DD3vD6jkr" target="_blank" style="color:#4a9eff;">Discord</a>.</p>
+        <div style="margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.06);font-size:12px;color:#666666;">Last updated: August 2026</div>
+      </div>
+    </div>
+  </section>
+
+  <%- include('partials/footer') %>
+</body>
+</html>

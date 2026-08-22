@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Crect width='128' height='128' rx='28' fill='%230a0a0a'/%3E%3Crect x='4' y='4' width='120' height='120' rx='24' stroke='%234a9eff' stroke-width='2.5'/%3E%3Ctext x='64' y='82' font-size='52' font-weight='700' fill='%234a9eff' text-anchor='middle' font-family='Helvetica Neue, sans-serif'%3ERI%3C/text%3E%3C/svg%3E" />
+</head>
+<body>
+  <%- include('partials/header') %>
+
+  <section class="section">
+    <div class="container" style="max-width:700px;">
+      <div class="section-header">
+        <h2>Database Stats</h2>
+        <p>Real-time statistics from the RoIron API</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;" id="stats-grid">
+        <div style="background:#1a1a1a;border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:16px;text-align:center;">
+          <div style="font-size:24px;font-weight:700;color:#4a9eff;" id="stat-users">—</div>
+          <div style="font-size:11px;color:#888888;">Total Users</div>
+        </div>
+        <div style="background:#1a1a1a;border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:16px;text-align:center;">
+          <div style="font-size:24px;font-weight:700;color:#4CAF50;" id="stat-active">—</div>
+          <div style="font-size:11px;color:#888888;">Active Users</div>
+        </div>
+        <div style="background:#1a1a1a;border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:16px;text-align:center;">
+          <div style="font-size:24px;font-weight:700;color:#ffd700;" id="stat-licenses">—</div>
+          <div style="font-size:11px;color:#888888;">Active Licenses</div>
+        </div>
+        <div style="background:#1a1a1a;border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:16px;text-align:center;">
+          <div style="font-size:24px;font-weight:700;color:#FF9800;" id="stat-sessions">—</div>
+          <div style="font-size:11px;color:#888888;">Active Sessions</div>
+        </div>
+        <div style="background:#1a1a1a;border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:16px;text-align:center;">
+          <div style="font-size:24px;font-weight:700;color:#4a9eff;" id="stat-xp">—</div>
+          <div style="font-size:11px;color:#888888;">Total XP</div>
+        </div>
+        <div style="background:#1a1a1a;border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:16px;text-align:center;">
+          <div style="font-size:24px;font-weight:700;color:#4CAF50;" id="stat-level">—</div>
+          <div style="font-size:11px;color:#888888;">Avg Level</div>
+        </div>
+        <div style="background:#1a1a1a;border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:16px;text-align:center;">
+          <div style="font-size:24px;font-weight:700;color:#ff6b6b;" id="stat-playtime">—</div>
+          <div style="font-size:11px;color:#888888;">Playtime (hours)</div>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:12px;font-size:12px;color:#444444;">
+        Updated: <span id="stat-updated">—</span>
+      </div>
+    </div>
+  </section>
+
+  <%- include('partials/footer') %>
+
+  <script>
+    async function fetchStats() {
+      try {
+        const res = await fetch('/api/db/stats');
+        const data = await res.json();
+        if (data.success) {
+          document.getElementById('stat-users').textContent = data.users;
+          document.getElementById('stat-active').textContent = data.active_users;
+          document.getElementById('stat-licenses').textContent = data.licenses;
+          document.getElementById('stat-sessions').textContent = data.active_sessions;
+          document.getElementById('stat-xp').textContent = data.total_xp.toLocaleString();
+          document.getElementById('stat-level').textContent = data.avg_level;
+          document.getElementById('stat-playtime').textContent = data.total_playtime.toLocaleString();
+          document.getElementById('stat-updated').textContent = new Date(data.updated_at).toLocaleString();
+        }
+      } catch (e) {
+        // silent
+      }
+    }
+    fetchStats();
+    setInterval(fetchStats, 15000);
+  </script>
+</body>
+</html>
