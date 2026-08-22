@@ -58,6 +58,9 @@ body {
 }
 
 .nav-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
   color: #888888;
   text-decoration: none;
   font-size: 14px;
@@ -292,7 +295,9 @@ body {
 }
 
 .feature-icon {
-  font-size: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-bottom: 12px;
 }
 
@@ -300,11 +305,13 @@ body {
   font-size: 18px;
   font-weight: 600;
   margin-bottom: 6px;
+  text-align: center;
 }
 
 .feature-card p {
   color: #888888;
   font-size: 14px;
+  text-align: center;
 }
 
 /* ============================================================
@@ -354,7 +361,9 @@ body {
 }
 
 .footer a {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 6px;
   color: #888888;
   text-decoration: none;
   font-size: 13px;
@@ -409,12 +418,12 @@ body {
   .features-grid {
     grid-template-columns: 1fr;
   }
+  .features-grid[style*="grid-template-columns: repeat(2, 1fr)"] {
+    grid-template-columns: 1fr !important;
+  }
   .footer-grid {
     grid-template-columns: 1fr;
     gap: 20px;
-  }
-  .features-grid[style*="grid-template-columns: repeat(2, 1fr)"] {
-    grid-template-columns: 1fr !important;
   }
 }
 

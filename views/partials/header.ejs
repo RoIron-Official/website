@@ -5,11 +5,26 @@
             RoIron
         </a>
         <nav class="nav">
-            <a href="/" class="nav-link">Home</a>
-            <a href="/features" class="nav-link">Features</a>
-            <a href="/docs" class="nav-link">Docs</a>
-            <a href="/download" class="nav-link">Download</a>
-            <a href="/license" class="nav-link">License</a>
+            <a href="/" class="nav-link">
+                <%- include('partials/icons', { icon: 'home', class: 'icon-sm' }) %>
+                Home
+            </a>
+            <a href="/features" class="nav-link">
+                <%- include('partials/icons', { icon: 'features', class: 'icon-sm' }) %>
+                Features
+            </a>
+            <a href="/docs" class="nav-link">
+                <%- include('partials/icons', { icon: 'docs', class: 'icon-sm' }) %>
+                Docs
+            </a>
+            <a href="/download" class="nav-link">
+                <%- include('partials/icons', { icon: 'download', class: 'icon-sm' }) %>
+                Download
+            </a>
+            <a href="/license" class="nav-link">
+                <%- include('partials/icons', { icon: 'license', class: 'icon-sm' }) %>
+                License
+            </a>
         </nav>
     </div>
 </header>

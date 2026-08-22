@@ -1,0 +1,39 @@
+/* ============================================================
+   RoIron SVG Icons
+   Все иконки в едином стиле
+   ============================================================ */
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 1em;
+  height: 1em;
+  line-height: 1;
+}
+
+.icon svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Размеры */
+.icon-sm { width: 14px; height: 14px; }
+.icon-md { width: 20px; height: 20px; }
+.icon-lg { width: 28px; height: 28px; }
+.icon-xl { width: 40px; height: 40px; }
+.icon-xxl { width: 56px; height: 56px; }
+
+/* Цвета */
+.icon-primary { color: #4a9eff; }
+.icon-success { color: #4CAF50; }
+.icon-warning { color: #FF9800; }
+.icon-danger { color: #ff6b6b; }
+.icon-muted { color: #888888; }
+.icon-white { color: #ffffff; }

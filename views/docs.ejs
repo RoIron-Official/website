@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= title %></title>
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/icons.css">
 </head>
 <body>
     <%- include('partials/header') %>
@@ -19,7 +20,10 @@
 
                 <div style="max-width: 800px; margin: 0 auto;">
                     <div style="background: #1a1a1a; border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 24px; margin-bottom: 16px;">
-                        <h3 style="color: #ffffff; font-size: 18px; margin-bottom: 8px;">📖 Getting Started</h3>
+                        <h3 style="color: #ffffff; font-size: 18px; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
+                            <%- include('partials/icons', { icon: 'rocket', class: 'icon-md icon-primary' }) %>
+                            Getting Started
+                        </h3>
                         <p style="color: #888888; font-size: 14px; line-height: 1.8;">
                             RoIron is a lightweight Roblox enhancement tool. After installing the extension,
                             navigate to <code style="background: rgba(255,255,255,0.04); padding: 2px 8px; border-radius: 4px; color: #4a9eff;">https://www.roblox.com/roiron</code>
@@ -28,7 +32,10 @@
                     </div>
 
                     <div style="background: #1a1a1a; border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 24px; margin-bottom: 16px;">
-                        <h3 style="color: #ffffff; font-size: 18px; margin-bottom: 8px;">🔑 License Activation</h3>
+                        <h3 style="color: #ffffff; font-size: 18px; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
+                            <%- include('partials/icons', { icon: 'shield', class: 'icon-md icon-primary' }) %>
+                            License Activation
+                        </h3>
                         <p style="color: #888888; font-size: 14px; line-height: 1.8;">
                             To activate RoIron, you need a valid license key. Visit
                             <code style="background: rgba(255,255,255,0.04); padding: 2px 8px; border-radius: 4px; color: #4a9eff;">https://www.roblox.com/roiron</code>
@@ -37,7 +44,10 @@
                     </div>
 
                     <div style="background: #1a1a1a; border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 24px; margin-bottom: 16px;">
-                        <h3 style="color: #ffffff; font-size: 18px; margin-bottom: 8px;">🎨 Theme Creator</h3>
+                        <h3 style="color: #ffffff; font-size: 18px; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
+                            <%- include('partials/icons', { icon: 'palette', class: 'icon-md icon-primary' }) %>
+                            Theme Creator
+                        </h3>
                         <p style="color: #888888; font-size: 14px; line-height: 1.8;">
                             RoIron includes a powerful Theme Creator. Click the paint palette icon in the sidebar
                             to open the editor. You can pick any element on the page and customize its styles:
@@ -46,7 +56,10 @@
                     </div>
 
                     <div style="background: #1a1a1a; border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 24px; margin-bottom: 16px;">
-                        <h3 style="color: #ffffff; font-size: 18px; margin-bottom: 8px;">⌨️ Keyboard Shortcuts</h3>
+                        <h3 style="color: #ffffff; font-size: 18px; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
+                            <%- include('partials/icons', { icon: 'code', class: 'icon-md icon-primary' }) %>
+                            Keyboard Shortcuts
+                        </h3>
                         <ul style="color: #888888; font-size: 14px; line-height: 2; padding-left: 20px;">
                             <li><kbd style="background: rgba(255,255,255,0.04); padding: 2px 8px; border-radius: 4px; color: #ffffff;">Alt</kbd> + <kbd style="background: rgba(255,255,255,0.04); padding: 2px 8px; border-radius: 4px; color: #ffffff;">R</kbd> — Open RoIron home page</li>
                             <li><kbd style="background: rgba(255,255,255,0.04); padding: 2px 8px; border-radius: 4px; color: #ffffff;">Alt</kbd> + <kbd style="background: rgba(255,255,255,0.04); padding: 2px 8px; border-radius: 4px; color: #ffffff;">S</kbd> — Open RoIron settings</li>
@@ -55,7 +68,10 @@
                     </div>
 
                     <div style="background: #1a1a1a; border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 24px;">
-                        <h3 style="color: #ffffff; font-size: 18px; margin-bottom: 8px;">🛠️ Development</h3>
+                        <h3 style="color: #ffffff; font-size: 18px; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
+                            <%- include('partials/icons', { icon: 'github', class: 'icon-md icon-primary' }) %>
+                            Development
+                        </h3>
                         <p style="color: #888888; font-size: 14px; line-height: 1.8;">
                             RoIron is open-source. You can find the source code and contribute on GitHub.
                             <br><br>

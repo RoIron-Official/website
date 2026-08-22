@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= title %></title>
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/icons.css">
 </head>
 <body>
     <%- include('partials/header') %>
@@ -18,10 +19,16 @@
                 </div>
 
                 <div style="max-width: 800px; margin: 0 auto; background: #1a1a1a; border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 32px; color: #cccccc; font-size: 14px; line-height: 1.8;">
-                    <h3 style="color: #ffffff; font-size: 18px; margin-bottom: 16px;">1. Right to Use</h3>
+                    <h3 style="color: #ffffff; font-size: 18px; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+                        <%- include('partials/icons', { icon: 'check', class: 'icon-md icon-success' }) %>
+                        1. Right to Use
+                    </h3>
                     <p>The user has the right to FREE use of the RoIron software (hereinafter referred to as the "Software") for personal and commercial purposes, provided that all provisions of this agreement are complied with.</p>
 
-                    <h3 style="color: #ffffff; font-size: 18px; margin-top: 24px; margin-bottom: 16px;">2. Prohibitions</h3>
+                    <h3 style="color: #ffffff; font-size: 18px; margin-top: 24px; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+                        <%- include('partials/icons', { icon: 'cross', class: 'icon-md icon-danger' }) %>
+                        2. Prohibitions
+                    </h3>
                     <p>The user is PROHIBITED from:</p>
                     <ul style="padding-left: 20px; color: #888888;">
                         <li>Modification, decompilation, or disassembly of the Software's source code or its parts.</li>
@@ -30,7 +37,10 @@
                         <li>Use of the Software in any commercial products, services, or projects without the explicit written permission of the author.</li>
                     </ul>
 
-                    <h3 style="color: #ffffff; font-size: 18px; margin-top: 24px; margin-bottom: 16px;">3. Limitation of Liability</h3>
+                    <h3 style="color: #ffffff; font-size: 18px; margin-top: 24px; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+                        <%- include('partials/icons', { icon: 'info', class: 'icon-md icon-warning' }) %>
+                        3. Limitation of Liability
+                    </h3>
                     <p>The Software is provided "as is". The author shall not be liable for:</p>
                     <ul style="padding-left: 20px; color: #888888;">
                         <li>Any losses, damages, or data loss arising from the use or inability to use the Software.</li>
@@ -38,13 +48,22 @@
                         <li>Actions of third parties related to the use of the Software.</li>
                     </ul>
 
-                    <h3 style="color: #ffffff; font-size: 18px; margin-top: 24px; margin-bottom: 16px;">4. Copyright</h3>
+                    <h3 style="color: #ffffff; font-size: 18px; margin-top: 24px; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+                        <%- include('partials/icons', { icon: 'lock', class: 'icon-md icon-primary' }) %>
+                        4. Copyright
+                    </h3>
                     <p>All rights to the RoIron Software, including source code, design, documentation, and related materials, belong to the author (RoIron). This agreement does not transfer to the user any intellectual property rights other than the right to use specified in Section 1.</p>
 
-                    <h3 style="color: #ffffff; font-size: 18px; margin-top: 24px; margin-bottom: 16px;">5. Termination</h3>
+                    <h3 style="color: #ffffff; font-size: 18px; margin-top: 24px; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+                        <%- include('partials/icons', { icon: 'cross', class: 'icon-md icon-danger' }) %>
+                        5. Termination
+                    </h3>
                     <p>The license is perpetual but may be revoked by the author in the event of a breach of the terms of this agreement by the user. Upon revocation, the user must cease using the Software and delete all copies of it.</p>
 
-                    <h3 style="color: #ffffff; font-size: 18px; margin-top: 24px; margin-bottom: 16px;">6. Governing Law</h3>
+                    <h3 style="color: #ffffff; font-size: 18px; margin-top: 24px; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+                        <%- include('partials/icons', { icon: 'shield', class: 'icon-md icon-primary' }) %>
+                        6. Governing Law
+                    </h3>
                     <p>This agreement shall be governed by the laws of the author's country. All disputes shall be resolved in court at the author's place of residence.</p>
 
                     <div style="margin-top: 32px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.06); text-align: center; color: #666666; font-size: 12px;">
