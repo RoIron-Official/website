@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  roiron-api:
+    build: .
+    container_name: roiron-api
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - DB_TYPE=mysql
+      - DB_HOST=db
+      - DB_PORT=3306
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_NAME=${DB_NAME}
+      - GITHUB_TOKEN=${GITHUB_TOKEN}
+      - DISCORD_WEBHOOK_URL=${DISCORD_WEBHOOK_URL}
+      - ADMIN_USER_ID=${ADMIN_USER_ID}
+    depends_on:
+      - db
+    volumes:
+      - ./logs:/app/logs
+    networks:
+      - roiron-network
+
+  db:
+    image: mysql:8.0
+    container_name: roiron-mysql
+    restart: unless-stopped
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+      - MYSQL_DATABASE=${DB_NAME}
+      - MYSQL_USER=${DB_USER}
+      - MYSQL_PASSWORD=${DB_PASSWORD}
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    networks:
+      - roiron-network
+
+volumes:
+  mysql-data:
+
+networks:
+  roiron-network:
+    driver: bridge
