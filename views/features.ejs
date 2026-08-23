@@ -5,30 +5,120 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title><%= title %></title>
   <link rel="stylesheet" href="/css/style.css" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Crect width='128' height='128' rx='28' fill='%230a0a0a'/%3E%3Crect x='4' y='4' width='120' height='120' rx='24' stroke='%234a9eff' stroke-width='2.5'/%3E%3Ctext x='64' y='82' font-size='52' font-weight='700' fill='%234a9eff' text-anchor='middle' font-family='Helvetica Neue, sans-serif'%3ERI%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="/css/icons.css" />
 </head>
 <body>
-  <%- include('partials/header') %>
+  <header class="header">
+    <div class="container header-inner">
+      <a href="/" class="logo">
+        <span class="icon icon-lg icon-white">
+          <svg viewBox="0 0 128 128" fill="none">
+            <rect width="128" height="128" rx="28" fill="#0a0a0a"/>
+            <rect x="4" y="4" width="120" height="120" rx="24" stroke="currentColor" stroke-width="2.5"/>
+            <text x="64" y="82" font-size="52" font-weight="700" fill="currentColor" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">RI</text>
+          </svg>
+        </span>
+        RoIron
+      </a>
+      <nav class="nav">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/docs" class="nav-link">Docs</a>
+        <a href="/download" class="nav-link">Download</a>
+        <a href="/login" class="nav-link">Login</a>
+      </nav>
+    </div>
+  </header>
 
-  <section class="section">
+  <main style="padding:60px 20px;">
     <div class="container">
-      <div class="section-header">
-        <h2>All Features</h2>
-        <p>Everything RoIron has to offer</p>
+      <div style="text-align:center;margin-bottom:48px;">
+        <h1 style="font-size:36px;font-weight:700;color:#ffffff;margin:0;">Features</h1>
+        <p style="font-size:18px;color:#888888;margin:8px 0 0;">Everything RoIron has to offer</p>
       </div>
-      <div class="features-grid" style="grid-template-columns:1fr 1fr;">
-        <div class="feature-card"><h3>Ad Blocker</h3><p>Blocks ads, analytics, and tracking scripts for a clean experience.</p></div>
-        <div class="feature-card"><h3>Dark Theme</h3><p>Fully customizable dark theme for all Roblox pages.</p></div>
-        <div class="feature-card"><h3>XP &amp; Leveling</h3><p>Earn XP for playing, track your level, and compete on leaderboards.</p></div>
-        <div class="feature-card"><h3>Friend Status</h3><p>See online status of your friends directly on their avatars.</p></div>
-        <div class="feature-card"><h3>Avatar Customizer</h3><p>Glow, Fire, Rainbow, Galaxy, Diamond effects for your avatar.</p></div>
-        <div class="feature-card"><h3>Server Region</h3><p>See server region and join random servers with one click.</p></div>
-        <div class="feature-card"><h3>Image Optimizer</h3><p>Lazy loading for images, faster page loads.</p></div>
-        <div class="feature-card"><h3>Keyboard Shortcuts</h3><p>Alt+R for home, Alt+S for settings.</p></div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:20px;">
+        <div style="background:#141414;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:24px;">
+          <span class="icon icon-xl icon-primary" style="display:block;margin-bottom:12px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              <polyline points="9 12 11 14 15 10"/>
+            </svg>
+          </span>
+          <h3 style="font-size:18px;font-weight:600;color:#ffffff;margin:0 0 8px;">Privacy Protection</h3>
+          <p style="font-size:14px;color:#888888;margin:0;">Blocks trackers, analytics, and sponsored content. Your data stays private.</p>
+        </div>
+
+        <div style="background:#141414;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:24px;">
+          <span class="icon icon-xl icon-primary" style="display:block;margin-bottom:12px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 6 12 12 16 14"/>
+            </svg>
+          </span>
+          <h3 style="font-size:18px;font-weight:600;color:#ffffff;margin:0 0 8px;">Dark Theme Lock</h3>
+          <p style="font-size:14px;color:#888888;margin:0;">Forces dark theme across all Roblox pages. No more eye strain.</p>
+        </div>
+
+        <div style="background:#141414;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:24px;">
+          <span class="icon icon-xl icon-primary" style="display:block;margin-bottom:12px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+              <path d="M2 17l10 5 10-5"/>
+              <path d="M2 12l10 5 10-5"/>
+            </svg>
+          </span>
+          <h3 style="font-size:18px;font-weight:600;color:#ffffff;margin:0 0 8px;">XP & Leveling System</h3>
+          <p style="font-size:14px;color:#888888;margin:0;">Earn XP while playing Roblox. Level up and unlock special decorations.</p>
+        </div>
+
+        <div style="background:#141414;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:24px;">
+          <span class="icon icon-xl icon-primary" style="display:block;margin-bottom:12px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="2.18"/>
+              <line x1="8" y1="2" x2="8" y2="22"/>
+              <line x1="16" y1="2" x2="16" y2="22"/>
+              <line x1="2" y1="8" x2="22" y2="8"/>
+              <line x1="2" y1="16" x2="22" y2="16"/>
+            </svg>
+          </span>
+          <h3 style="font-size:18px;font-weight:600;color:#ffffff;margin:0 0 8px;">Friend Status</h3>
+          <p style="font-size:14px;color:#888888;margin:0;">See which of your friends are online, in-game, or in Studio.</p>
+        </div>
+
+        <div style="background:#141414;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:24px;">
+          <span class="icon icon-xl icon-primary" style="display:block;margin-bottom:12px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M12 6v6l4 2"/>
+            </svg>
+          </span>
+          <h3 style="font-size:18px;font-weight:600;color:#ffffff;margin:0 0 8px;">Game Server Region</h3>
+          <p style="font-size:14px;color:#888888;margin:0;">Shows server region for each game server. Choose the best one for you.</p>
+        </div>
+
+        <div style="background:#141414;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:24px;">
+          <span class="icon icon-xl icon-primary" style="display:block;margin-bottom:12px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+              <path d="M2 17l10 5 10-5"/>
+              <path d="M2 12l10 5 10-5"/>
+              <path d="M12 2v5"/>
+              <path d="M12 12v5"/>
+            </svg>
+          </span>
+          <h3 style="font-size:18px;font-weight:600;color:#ffffff;margin:0 0 8px;">Avatar Customization</h3>
+          <p style="font-size:14px;color:#888888;margin:0;">Customize your avatar with special effects. Unlock new ones as you level up.</p>
+        </div>
       </div>
     </div>
-  </section>
+  </main>
 
-  <%- include('partials/footer') %>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        &copy; <%= year %> RoIron. All rights reserved.
+      </div>
+    </div>
+  </footer>
 </body>
 </html>

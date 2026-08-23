@@ -1,3 +1,7 @@
+/* ============================================================
+   RoIron Website — Complete Styles
+   ============================================================ */
+
 * {
   margin: 0;
   padding: 0;
@@ -20,6 +24,7 @@ body {
   padding: 0 20px;
 }
 
+/* ===== ICONS ===== */
 .icon {
   display: inline-flex;
   align-items: center;
@@ -52,7 +57,9 @@ body {
 .icon-danger { color: #ff6b6b; }
 .icon-muted { color: #888888; }
 .icon-white { color: #ffffff; }
+.icon-gold { color: #ffd700; }
 
+/* ===== HEADER ===== */
 .header {
   border-bottom: 1px solid rgba(255,255,255,0.06);
   padding: 12px 0;
@@ -101,6 +108,7 @@ body {
   color: #ffffff;
 }
 
+/* ===== HERO ===== */
 .hero {
   padding: 60px 0 80px;
 }
@@ -200,8 +208,9 @@ body {
   background: rgba(255,255,255,0.04);
 }
 
+/* ===== HERO CARD ===== */
 .hero-card {
-  background: #1a1a1a;
+  background: #141414;
   border: 1px solid rgba(255,255,255,0.06);
   border-radius: 12px;
   padding: 24px;
@@ -221,6 +230,7 @@ body {
 .hero-card-dots {
   display: flex;
   gap: 6px;
+  margin-left: auto;
 }
 
 .hero-card-dots span {
@@ -275,6 +285,7 @@ body {
   color: #cccccc;
 }
 
+/* ===== SECTIONS ===== */
 .section {
   padding: 60px 0;
   border-top: 1px solid rgba(255,255,255,0.06);
@@ -296,6 +307,7 @@ body {
   font-size: 16px;
 }
 
+/* ===== FEATURES ===== */
 .features-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -303,7 +315,7 @@ body {
 }
 
 .feature-card {
-  background: #1a1a1a;
+  background: #141414;
   border: 1px solid rgba(255,255,255,0.06);
   border-radius: 12px;
   padding: 24px;
@@ -334,6 +346,7 @@ body {
   font-size: 14px;
 }
 
+/* ===== FOOTER ===== */
 .footer {
   border-top: 1px solid rgba(255,255,255,0.06);
   padding: 40px 0 20px;
@@ -399,6 +412,7 @@ body {
   color: #666666;
 }
 
+/* ===== RESPONSIVE ===== */
 @media (max-width: 992px) {
   .hero-content {
     grid-template-columns: 1fr;
@@ -436,6 +450,7 @@ body {
   }
 }
 
+/* ===== UTILITY ===== */
 code {
   background: rgba(255,255,255,0.04);
   padding: 2px 8px;

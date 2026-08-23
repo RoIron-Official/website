@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <style>
+    .pma-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      vertical-align: middle;
+    }
+    .pma-icon svg {
+      width: 100%;
+      height: 100%;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .pma-icon-sm { width: 16px; height: 16px; }
+
+    .pma-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .pma-header h1 {
+      font-size: 24px;
+      font-weight: 700;
+      color: #ffffff;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .pma-header .actions {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .pma-header .actions .badge {
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: 600;
+      background: rgba(74,158,255,0.15);
+      color: #4a9eff;
+      border: 1px solid rgba(74,158,255,0.2);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .pma-header .actions .back-btn {
+      padding: 6px 16px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 6px;
+      color: #cccccc;
+      font-size: 13px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .pma-header .actions .back-btn:hover {
+      background: rgba(255,255,255,0.08);
+    }
+    .pma-header .actions .logout-btn {
+      padding: 6px 16px;
+      background: rgba(255,50,50,0.1);
+      border: 1px solid rgba(255,50,50,0.2);
+      border-radius: 6px;
+      color: #ff6b6b;
+      font-size: 13px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .pma-header .actions .logout-btn:hover {
+      background: rgba(255,50,50,0.2);
+    }
+    .pma-table-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .pma-table-info .info {
+      font-size: 13px;
+      color: #888888;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .pma-table-info .info strong {
+      color: #ffffff;
+    }
+    .pma-table-info .pagination {
+      display: flex;
+      gap: 4px;
+    }
+    .pma-table-info .pagination button {
+      padding: 4px 12px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 4px;
+      color: #cccccc;
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .pma-table-info .pagination button:hover {
+      background: rgba(255,255,255,0.08);
+    }
+    .pma-table-info .pagination button:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+    .pma-table {
+      overflow-x: auto;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.04);
+      border-radius: 8px;
+      padding: 4px;
+    }
+    .pma-table table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+    .pma-table th {
+      padding: 10px 12px;
+      text-align: left;
+      font-weight: 600;
+      color: #888888;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      background: rgba(255,255,255,0.02);
+    }
+    .pma-table td {
+      padding: 8px 12px;
+      color: #cccccc;
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+      font-family: 'SF Mono', 'Menlo', 'Monaco', monospace;
+      font-size: 12px;
+      max-width: 200px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .pma-table tr:hover td {
+      background: rgba(255,255,255,0.02);
+    }
+    .pma-table .null {
+      color: #444444;
+      font-style: italic;
+    }
+    .pma-table .empty {
+      text-align: center;
+      padding: 40px;
+      color: #666666;
+    }
+    .pma-error {
+      background: rgba(255,50,50,0.1);
+      border: 1px solid rgba(255,50,50,0.2);
+      border-radius: 8px;
+      padding: 16px;
+      color: #ff6b6b;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .pma-error .icon {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+    }
+    .pma-footer {
+      margin-top: 24px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255,255,255,0.04);
+      font-size: 11px;
+      color: #333333;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .pma-footer .icon {
+      width: 14px;
+      height: 14px;
+      color: #333333;
+    }
+    @media (max-width: 768px) {
+      .pma-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .pma-header .actions {
+        width: 100%;
+        flex-wrap: wrap;
+      }
+      .pma-table td {
+        max-width: 100px;
+        font-size: 11px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="pma-header">
+      <h1>
+        <span class="pma-icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="21" x2="9" y2="9"/><line x1="15" y1="21" x2="15" y2="9"/></svg>
+        </span>
+        <%= tableName %>
+        <span class="badge" style="font-size:12px;margin-left:8px;display:inline-flex;align-items:center;gap:4px;">
+          <span class="pma-icon pma-icon-sm">
+            <svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
+          </span>
+          <%= db_type %>
+        </span>
+      </h1>
+      <div class="actions">
+        <span class="badge">
+          <span class="pma-icon pma-icon-sm">
+            <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+          </span>
+          <%= total %> rows
+        </span>
+        <a href="/pma" class="back-btn">
+          <span class="pma-icon pma-icon-sm">
+            <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+          </span>
+          Back
+        </a>
+        <a href="/pma/logout" class="logout-btn">
+          <span class="pma-icon pma-icon-sm">
+            <svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+          </span>
+          Logout
+        </a>
+      </div>
+    </div>
+
+    <% if (error) { %>
+      <div class="pma-error">
+        <span class="icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </span>
+        <%= error %>
+      </div>
+    <% } %>
+
+    <div class="pma-table-info">
+      <div class="info">
+        <span class="pma-icon pma-icon-sm">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </span>
+        Showing <strong><%= offset + 1 %></strong> – <strong><%= Math.min(offset + limit, total) %></strong> of <strong><%= total %></strong> rows
+      </div>
+      <div class="pagination">
+        <button id="pma-prev" <%= offset === 0 ? 'disabled' : '' %>>
+          <span class="pma-icon pma-icon-sm">
+            <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+          </span>
+          Prev
+        </button>
+        <button id="pma-next" <%= offset + limit >= total ? 'disabled' : '' %>>
+          Next
+          <span class="pma-icon pma-icon-sm">
+            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          </span>
+        </button>
+      </div>
+    </div>
+
+    <div class="pma-table">
+      <% if (columns && columns.length > 0 && data && data.length > 0) { %>
+        <table>
+          <thead>
+            <tr>
+              <% columns.forEach(col => { %>
+                <th><%= col %></th>
+              <% }) %>
+            </tr>
+          </thead>
+          <tbody>
+            <% data.forEach(row => { %>
+              <tr>
+                <% columns.forEach(col => { %>
+                  <td>
+                    <% if (row[col] === null || row[col] === undefined) { %>
+                      <span class="null">NULL</span>
+                    <% } else { %>
+                      <%= String(row[col]).substring(0, 100) %>
+                      <%= String(row[col]).length > 100 ? '…' : '' %>
+                    <% } %>
+                  </td>
+                <% }) %>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      <% } else { %>
+        <div class="empty">
+          <%= error || 'No data found' %>
+        </div>
+      <% } %>
+    </div>
+
+    <div class="pma-footer">
+      <span class="icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      </span>
+      RoIron PMA · <%= year %>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const limit = <%= limit %>;
+      let offset = <%= offset %>;
+      const total = <%= total %>;
+      const tableName = '<%= tableName %>';
+
+      document.getElementById('pma-prev').addEventListener('click', function() {
+        if (offset > 0) {
+          window.location.href = `/pma/table/${tableName}?limit=${limit}&offset=${Math.max(0, offset - limit)}`;
+        }
+      });
+
+      document.getElementById('pma-next').addEventListener('click', function() {
+        if (offset + limit < total) {
+          window.location.href = `/pma/table/${tableName}?limit=${limit}&offset=${offset + limit}`;
+        }
+      });
+    });
+  </script>
+</body>
+</html>

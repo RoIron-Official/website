@@ -5,32 +5,61 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title><%= title %></title>
   <link rel="stylesheet" href="/css/style.css" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Crect width='128' height='128' rx='28' fill='%230a0a0a'/%3E%3Crect x='4' y='4' width='120' height='120' rx='24' stroke='%234a9eff' stroke-width='2.5'/%3E%3Ctext x='64' y='82' font-size='52' font-weight='700' fill='%234a9eff' text-anchor='middle' font-family='Helvetica Neue, sans-serif'%3ERI%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="/css/icons.css" />
 </head>
 <body>
-  <%- include('partials/header') %>
+  <header class="header">
+    <div class="container header-inner">
+      <a href="/" class="logo">
+        <span class="icon icon-lg icon-white">
+          <svg viewBox="0 0 128 128" fill="none">
+            <rect width="128" height="128" rx="28" fill="#0a0a0a"/>
+            <rect x="4" y="4" width="120" height="120" rx="24" stroke="currentColor" stroke-width="2.5"/>
+            <text x="64" y="82" font-size="52" font-weight="700" fill="currentColor" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">RI</text>
+          </svg>
+        </span>
+        RoIron
+      </a>
+      <nav class="nav">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/features" class="nav-link">Features</a>
+        <a href="/docs" class="nav-link">Docs</a>
+        <a href="/download" class="nav-link">Download</a>
+      </nav>
+    </div>
+  </header>
 
-  <section class="section">
+  <main style="padding:60px 20px;">
     <div class="container" style="max-width:700px;">
-      <div class="section-header">
-        <h2>License</h2>
-        <p>RoIron License Agreement</p>
-      </div>
-      <div style="background:#1a1a1a;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:30px;color:#888888;line-height:1.8;">
-        <p><strong style="color:#ffffff;">RoIron License</strong></p>
-        <p>By using RoIron, you agree to the following terms:</p>
-        <ul style="padding-left:20px;margin:12px 0;">
-          <li>RoIron is provided as-is, without warranty of any kind.</li>
-          <li>You may use RoIron for personal, non-commercial purposes only.</li>
-          <li>Redistribution of RoIron is prohibited without explicit permission.</li>
-          <li>All intellectual property rights belong to RoIron.</li>
-        </ul>
-        <p style="margin-top:12px;">For any questions, contact us on <a href="https://discord.gg/9DD3vD6jkr" target="_blank" style="color:#4a9eff;">Discord</a>.</p>
-        <div style="margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.06);font-size:12px;color:#666666;">Last updated: August 2026</div>
+      <h1 style="font-size:32px;font-weight:700;color:#ffffff;margin:0 0 8px;">License</h1>
+      <p style="font-size:16px;color:#888888;margin:0 0 32px;">RoIron License Agreement</p>
+
+      <div style="background:#141414;border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:32px;font-size:14px;color:#888888;line-height:1.8;">
+        <p><strong style="color:#ffffff;">1. Grant of License</strong><br />
+        RoIron grants you a non-exclusive, non-transferable license to use the extension.</p>
+
+        <p><strong style="color:#ffffff;">2. Restrictions</strong><br />
+        You may not modify, reverse engineer, or redistribute the extension without permission.</p>
+
+        <p><strong style="color:#ffffff;">3. Privacy</strong><br />
+        RoIron does not collect or store personal data. All data is stored locally.</p>
+
+        <p><strong style="color:#ffffff;">4. Termination</strong><br />
+        This license terminates automatically if you violate any terms.</p>
+
+        <p style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.04);font-size:12px;color:#666666;">
+          Last updated: <%= new Date().toLocaleDateString() %>
+        </p>
       </div>
     </div>
-  </section>
+  </main>
 
-  <%- include('partials/footer') %>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        &copy; <%= year %> RoIron. All rights reserved.
+      </div>
+    </div>
+  </footer>
 </body>
 </html>

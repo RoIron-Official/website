@@ -1,6 +1,5 @@
 /* ============================================================
-   RoIron SVG Icons
-   Все иконки в едином стиле
+   RoIron SVG Icons — Clean, no emojis
    ============================================================ */
 
 .icon {
@@ -23,17 +22,16 @@
   stroke-linejoin: round;
 }
 
-/* Размеры */
 .icon-sm { width: 14px; height: 14px; }
 .icon-md { width: 20px; height: 20px; }
 .icon-lg { width: 28px; height: 28px; }
 .icon-xl { width: 40px; height: 40px; }
 .icon-xxl { width: 56px; height: 56px; }
 
-/* Цвета */
 .icon-primary { color: #4a9eff; }
 .icon-success { color: #4CAF50; }
 .icon-warning { color: #FF9800; }
 .icon-danger { color: #ff6b6b; }
 .icon-muted { color: #888888; }
 .icon-white { color: #ffffff; }
+.icon-gold { color: #ffd700; }

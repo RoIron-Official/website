@@ -5,76 +5,300 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title><%= title %></title>
   <link rel="stylesheet" href="/css/style.css" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Crect width='128' height='128' rx='28' fill='%230a0a0a'/%3E%3Crect x='4' y='4' width='120' height='120' rx='24' stroke='%234a9eff' stroke-width='2.5'/%3E%3Ctext x='64' y='82' font-size='52' font-weight='700' fill='%234a9eff' text-anchor='middle' font-family='Helvetica Neue, sans-serif'%3ERI%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="/css/icons.css" />
+  <style>
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .stat-card {
+      background: #141414;
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 10px;
+      padding: 16px 20px;
+      text-align: center;
+    }
+    .stat-card .value {
+      font-size: 28px;
+      font-weight: 700;
+      color: #4a9eff;
+    }
+    .stat-card .label {
+      font-size: 12px;
+      color: #888888;
+      margin-top: 4px;
+    }
+    .stat-card .value.loading {
+      animation: pulse 1.5s ease-in-out infinite;
+      color: #666666;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+    .error-banner {
+      background: rgba(255,50,50,0.1);
+      border: 1px solid rgba(255,50,50,0.2);
+      border-radius: 8px;
+      padding: 12px 16px;
+      color: #ff6b6b;
+      font-size: 13px;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    .status-badge {
+      display: inline-block;
+      padding: 2px 12px;
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: 500;
+    }
+    .status-badge.online {
+      background: rgba(76,175,80,0.15);
+      color: #4CAF50;
+      border: 1px solid rgba(76,175,80,0.2);
+    }
+    .status-badge.offline {
+      background: rgba(255,50,50,0.15);
+      color: #ff6b6b;
+      border: 1px solid rgba(255,50,50,0.2);
+    }
+    .status-badge.checking {
+      background: rgba(255,152,0,0.15);
+      color: #FF9800;
+      border: 1px solid rgba(255,152,0,0.2);
+      animation: pulse 1s ease-in-out infinite;
+    }
+    .user-list {
+      margin-top: 20px;
+      background: #141414;
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 10px;
+      padding: 16px;
+    }
+    .user-list h3 {
+      font-size: 14px;
+      font-weight: 600;
+      color: #ffffff;
+      margin: 0 0 12px 0;
+    }
+    .user-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 6px 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+      font-size: 13px;
+      color: #cccccc;
+    }
+    .user-item:last-child {
+      border-bottom: none;
+    }
+    .user-item .name {
+      color: #ffffff;
+      font-weight: 500;
+    }
+    .user-item .xp {
+      color: #4a9eff;
+      font-weight: 600;
+    }
+    .user-item .level {
+      color: #ffd700;
+      font-weight: 600;
+    }
+  </style>
 </head>
 <body>
-  <%- include('partials/header') %>
+  <header class="header">
+    <div class="container header-inner">
+      <a href="/" class="logo">
+        <span class="icon icon-lg icon-white">
+          <svg viewBox="0 0 128 128" fill="none">
+            <rect width="128" height="128" rx="28" fill="#0a0a0a"/>
+            <rect x="4" y="4" width="120" height="120" rx="24" stroke="currentColor" stroke-width="2.5"/>
+            <text x="64" y="82" font-size="52" font-weight="700" fill="currentColor" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">RI</text>
+          </svg>
+        </span>
+        RoIron
+      </a>
+      <nav class="nav">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/features" class="nav-link">Features</a>
+        <a href="/docs" class="nav-link">Docs</a>
+        <a href="/login" class="nav-link">Login</a>
+      </nav>
+    </div>
+  </header>
 
-  <section class="section">
-    <div class="container" style="max-width:700px;">
-      <div class="section-header">
-        <h2>Database Stats</h2>
-        <p>Real-time statistics from the RoIron API</p>
+  <main style="padding:60px 20px;">
+    <div class="container">
+      <div style="text-align:center;margin-bottom:32px;">
+        <h1 style="font-size:32px;font-weight:700;color:#ffffff;margin:0;">Database Stats</h1>
+        <p style="font-size:16px;color:#888888;margin:4px 0 0;">Real-time statistics from the RoIron API</p>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;" id="stats-grid">
-        <div style="background:#1a1a1a;border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:16px;text-align:center;">
-          <div style="font-size:24px;font-weight:700;color:#4a9eff;" id="stat-users">—</div>
-          <div style="font-size:11px;color:#888888;">Total Users</div>
-        </div>
-        <div style="background:#1a1a1a;border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:16px;text-align:center;">
-          <div style="font-size:24px;font-weight:700;color:#4CAF50;" id="stat-active">—</div>
-          <div style="font-size:11px;color:#888888;">Active Users</div>
-        </div>
-        <div style="background:#1a1a1a;border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:16px;text-align:center;">
-          <div style="font-size:24px;font-weight:700;color:#ffd700;" id="stat-licenses">—</div>
-          <div style="font-size:11px;color:#888888;">Active Licenses</div>
-        </div>
-        <div style="background:#1a1a1a;border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:16px;text-align:center;">
-          <div style="font-size:24px;font-weight:700;color:#FF9800;" id="stat-sessions">—</div>
-          <div style="font-size:11px;color:#888888;">Active Sessions</div>
-        </div>
-        <div style="background:#1a1a1a;border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:16px;text-align:center;">
-          <div style="font-size:24px;font-weight:700;color:#4a9eff;" id="stat-xp">—</div>
-          <div style="font-size:11px;color:#888888;">Total XP</div>
-        </div>
-        <div style="background:#1a1a1a;border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:16px;text-align:center;">
-          <div style="font-size:24px;font-weight:700;color:#4CAF50;" id="stat-level">—</div>
-          <div style="font-size:11px;color:#888888;">Avg Level</div>
-        </div>
-        <div style="background:#1a1a1a;border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:16px;text-align:center;">
-          <div style="font-size:24px;font-weight:700;color:#ff6b6b;" id="stat-playtime">—</div>
-          <div style="font-size:11px;color:#888888;">Playtime (hours)</div>
-        </div>
+
+      <div id="status-container" style="text-align:center;margin-bottom:16px;">
+        <span class="status-badge checking" id="api-status">Checking API...</span>
       </div>
-      <div style="text-align:center;margin-top:12px;font-size:12px;color:#444444;">
-        Updated: <span id="stat-updated">—</span>
+
+      <div id="stats-container">
+        <div style="text-align:center;padding:40px;color:#666666;">
+          <span class="icon icon-xl" style="display:block;margin:0 auto 12px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="2" x2="12" y2="6"/>
+              <line x1="12" y1="18" x2="12" y2="22"/>
+              <line x1="4.93" y1="4.93" x2="7.76" y2="7.76"/>
+              <line x1="16.24" y1="16.24" x2="19.07" y2="19.07"/>
+              <line x1="2" y1="12" x2="6" y2="12"/>
+              <line x1="18" y1="12" x2="22" y2="12"/>
+              <line x1="4.93" y1="19.07" x2="7.76" y2="16.24"/>
+              <line x1="16.24" y1="7.76" x2="19.07" y2="4.93"/>
+            </svg>
+          </span>
+          <div>Loading stats...</div>
+        </div>
       </div>
     </div>
-  </section>
+  </main>
 
-  <%- include('partials/footer') %>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        &copy; <%= year %> RoIron. All rights reserved.
+      </div>
+    </div>
+  </footer>
 
   <script>
-    async function fetchStats() {
+    let statsData = null;
+
+    async function loadStats() {
       try {
+        const statusEl = document.getElementById('api-status');
+        statusEl.className = 'status-badge checking';
+        statusEl.textContent = 'Checking API...';
+
         const res = await fetch('/api/db/stats');
         const data = await res.json();
-        if (data.success) {
-          document.getElementById('stat-users').textContent = data.users;
-          document.getElementById('stat-active').textContent = data.active_users;
-          document.getElementById('stat-licenses').textContent = data.licenses;
-          document.getElementById('stat-sessions').textContent = data.active_sessions;
-          document.getElementById('stat-xp').textContent = data.total_xp.toLocaleString();
-          document.getElementById('stat-level').textContent = data.avg_level;
-          document.getElementById('stat-playtime').textContent = data.total_playtime.toLocaleString();
-          document.getElementById('stat-updated').textContent = new Date(data.updated_at).toLocaleString();
+
+        statsData = data;
+        
+        const container = document.getElementById('stats-container');
+        const statusEl2 = document.getElementById('api-status');
+
+        if (data.success && data.api_available !== false) {
+          statusEl2.className = 'status-badge online';
+          statusEl2.textContent = 'API Online';
+          
+          container.innerHTML = `
+            <div class="stats-grid">
+              <div class="stat-card">
+                <div class="value">${data.users || 0}</div>
+                <div class="label">Total Users</div>
+              </div>
+              <div class="stat-card">
+                <div class="value">${data.active_users || 0}</div>
+                <div class="label">Active Users (7d)</div>
+              </div>
+              <div class="stat-card">
+                <div class="value">${data.licenses || 0}</div>
+                <div class="label">Active Licenses</div>
+              </div>
+              <div class="stat-card">
+                <div class="value">${data.total_xp || 0}</div>
+                <div class="label">Total XP</div>
+              </div>
+              <div class="stat-card">
+                <div class="value">${data.avg_level || 0}</div>
+                <div class="label">Average Level</div>
+              </div>
+              <div class="stat-card">
+                <div class="value">${data.total_playtime || 0}h</div>
+                <div class="label">Total Playtime</div>
+              </div>
+            </div>
+            <div style="text-align:center;font-size:12px;color:#444444;margin-top:8px;">
+              Updated: ${new Date(data.updated_at).toLocaleString()}
+            </div>
+            ${data.raw_users && data.raw_users.length > 0 ? `
+              <div class="user-list">
+                <h3>Recent Users</h3>
+                ${data.raw_users.slice(0, 10).map(u => `
+                  <div class="user-item">
+                    <span class="name">${u.username || 'Unknown'}</span>
+                    <span>
+                      <span class="xp">${u.xp || 0} XP</span>
+                      <span class="level">Lv.${u.level || 1}</span>
+                    </span>
+                  </div>
+                `).join('')}
+              </div>
+            ` : ''}
+          `;
+        } else {
+          statusEl2.className = 'status-badge offline';
+          statusEl2.textContent = 'API Offline — Showing cached data';
+          
+          container.innerHTML = `
+            <div class="error-banner">
+              <span class="icon icon-sm icon-danger" style="vertical-align:middle;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"/>
+                  <line x1="12" y1="8" x2="12" y2="12"/>
+                  <line x1="12" y1="16" x2="12.01" y2="16"/>
+                </svg>
+              </span>
+              API unavailable — showing last known data
+            </div>
+            <div class="stats-grid">
+              <div class="stat-card">
+                <div class="value">${data.users || 0}</div>
+                <div class="label">Total Users (cached)</div>
+              </div>
+              <div class="stat-card">
+                <div class="value">${data.active_users || 0}</div>
+                <div class="label">Active Users (cached)</div>
+              </div>
+              <div class="stat-card">
+                <div class="value">${data.licenses || 0}</div>
+                <div class="label">Active Licenses (cached)</div>
+              </div>
+            </div>
+            <div style="text-align:center;font-size:12px;color:#444444;margin-top:8px;">
+              Cached: ${new Date(data.updated_at).toLocaleString()}
+            </div>
+          `;
         }
-      } catch (e) {
-        // silent
+      } catch (error) {
+        console.error('[Stats] Error:', error);
+        const container = document.getElementById('stats-container');
+        const statusEl = document.getElementById('api-status');
+        statusEl.className = 'status-badge offline';
+        statusEl.textContent = 'API Error';
+        container.innerHTML = `
+          <div class="error-banner">
+            <span class="icon icon-sm icon-danger" style="vertical-align:middle;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="12" y1="8" x2="12" y2="12"/>
+                <line x1="12" y1="16" x2="12.01" y2="16"/>
+              </svg>
+            </span>
+            Failed to load stats. Please try again later.
+          </div>
+          <div style="text-align:center;padding:20px;color:#666666;">
+            <button onclick="loadStats()" style="padding:8px 20px;background:#4a9eff;border:none;border-radius:6px;color:#ffffff;cursor:pointer;font-size:13px;">
+              Retry
+            </button>
+          </div>
+        `;
       }
     }
-    fetchStats();
-    setInterval(fetchStats, 15000);
+
+    loadStats();
+    setInterval(loadStats, 30000);
   </script>
 </body>
 </html>
